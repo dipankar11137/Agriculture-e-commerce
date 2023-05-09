@@ -133,7 +133,7 @@ const Navbar = () => {
               {" "}
               <MdOutlineBikeScooter
                 className="mr-4 text-yellow-500 animate-bounce"
-                size={55}
+                size={45}
               />{" "}
               Agriculture E-commerce{" "}
             </div>
