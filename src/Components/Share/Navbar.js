@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import { signOut } from "firebase/auth";
-import { MdAgriculture } from "react-icons/md";
+import { MdOutlineBikeScooter } from "react-icons/md";
 
 const Navbar = () => {
   const [user] = useAuthState(auth);
@@ -128,11 +128,14 @@ const Navbar = () => {
           <Link to={"/"}>
             <div
               onClick={() => setSelectedButton("Button 1")}
-              className="btn btn-ghost text-secondary font-extrabold text-3xl uppercase"
+              className="btn btn-ghost text-white font-extrabold text-3xl uppercase"
             >
               {" "}
-              <MdAgriculture className="mr-4 text-secondary" size={55} />{" "}
-              Development Agriculture{" "}
+              <MdOutlineBikeScooter
+                className="mr-4 text-yellow-500 animate-bounce"
+                size={55}
+              />{" "}
+              Agriculture E-commerce{" "}
             </div>
           </Link>
         </div>
