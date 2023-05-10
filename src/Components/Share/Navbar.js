@@ -92,7 +92,7 @@ const Navbar = () => {
   );
   return (
     <div
-      className="px-20 bg-pink-900"
+      className="px-20 bg-green-900"
       // style={{
       //   background: `url("https://cdn.wallpapersafari.com/61/31/Mo8nwL.jpg")`,
       //   backgroundSize: "cover",
@@ -132,7 +132,7 @@ const Navbar = () => {
             >
               {" "}
               <MdOutlineBikeScooter
-                className="mr-4 text-yellow-500 animate-bounce"
+                className="mr-4 text-yellow-400 animate-bounce"
                 size={45}
               />{" "}
               Agriculture E-commerce{" "}

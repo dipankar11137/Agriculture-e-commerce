@@ -50,14 +50,14 @@ const Banner = () => {
             </p>
           </div>
 
-          <div className=" flex justify-end">
+          {/* <div className=" flex justify-end">
             <Link
               to="/"
               className=" px-3 py-3 uppercase rounded-lg text-white cursor-pointer bg-primary hover:bg-secondary text-italic font-bold"
             >
               Buy now
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
       <div div className="relative    w-full  ">
