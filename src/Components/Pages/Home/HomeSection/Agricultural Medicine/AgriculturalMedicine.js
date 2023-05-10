@@ -4,7 +4,7 @@ import "../../../../CSS/ImageStyle.css";
 
 const AgriculturalMedicine = () => {
   return (
-    <div className="container bg-white shadow-2xl hover:shadow-inner rounded-lg">
+    <div className="container  bg-white shadow-2xl hover:shadow-inner rounded-lg w-96">
       <div>
         <img
           className="rounded-lg pic-style"
