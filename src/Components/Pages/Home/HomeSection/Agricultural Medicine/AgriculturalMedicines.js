@@ -11,9 +11,16 @@ const AgriculturalMedicines = () => {
       .then((data) => setProducts(data));
   }, []);
   return (
-    <div className="mt-20 mx-20 mb-20">
-      <h1>Products {products.length}</h1>
-      <AgriculturalMedicine />
+    <div className=" mx-20 mb-20 ">
+      <h1 className="my-10 text-5xl font-extrabold text-center">
+        Agricultural Medicine{" "}
+      </h1>
+      <div className="grid grid-cols-4 gap-8 bg-slate-100 rounded-lg p-2">
+        {" "}
+        {products.map((product) => (
+          <AgriculturalMedicine />
+        ))}
+      </div>
     </div>
   );
 };

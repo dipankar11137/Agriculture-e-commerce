@@ -3,17 +3,22 @@ import "../../../../CSS/CardStyle.css";
 
 const AgriculturalMedicine = () => {
   return (
-    <div className="container w-32">
+    <div className="container bg-white shadow-2xl hover:shadow-inner rounded-lg">
       <div>
         <img
-          className="w-32"
-          src="https://imgnew.outlookindia.com/public/uploads/articles/2021/5/21/Picture_(3).jpg"
+          className="rounded-lg"
+          src="https://3.imimg.com/data3/BO/BY/MY-13687334/kai-agro-80-plus-500x500.jpg"
           alt=""
         />
-        <h2>hello</h2>
-        <h2>heoo1</h2>
+        <div className="p-3">
+          <h2 className="text-2xl font-bold">hello</h2>
+          <h2 className="text-xl font-semibold">Price</h2>
+          <h1>Description</h1>
+        </div>
       </div>
-      <div className="overlay">My Name is John</div>
+      <div className="overlay">
+        <button className="btn btn-primary">Buy Now</button>
+      </div>
     </div>
   );
 };

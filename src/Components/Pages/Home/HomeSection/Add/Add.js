@@ -5,7 +5,7 @@ const Add = () => {
   return (
     <div className="flex">
       <img
-        className="w-full h-[250px]"
+        className="w-full h-[250px] "
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrm4ZV8KIyiq5OvTrmvMh32uDEHnx4V1bNjYc23yWm2MZyan9G45w3ds6T4wkzxmDV8Q&usqp=CAU"
         alt=""
       />
