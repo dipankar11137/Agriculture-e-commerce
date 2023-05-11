@@ -1,9 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const SellModal = () => {
-  const [category, setCategory] = useState("Buying And Selling");
+  const category = "Buying And Selling";
 
   const {
     register,
@@ -15,7 +16,25 @@ const SellModal = () => {
   const imageHostKey = "9a79ac160a3fcabfcd224dc71e011834";
 
   const submitProduct = (data, image) => {
-    console.log(data, image);
+    const updateProduct = {
+      ...data,
+      image,
+      category,
+    };
+
+    fetch(``, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updateProduct),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        toast.success("Successfully Add This Product");
+        reset();
+      });
+    console.log(updateProduct);
   };
 
   const onSubmit = (data) => {
@@ -81,7 +100,7 @@ const SellModal = () => {
                 <input
                   type="file"
                   placeholder="Images URL"
-                  className="input input-bordered bg-white w-full   hover:shadow-xl shadow-inner"
+                  className="input input-bordered bg-white w-full pt-2  hover:shadow-xl shadow-inner"
                   {...register("image", {
                     required: {
                       value: true,
