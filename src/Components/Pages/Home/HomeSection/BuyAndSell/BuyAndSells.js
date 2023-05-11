@@ -5,6 +5,7 @@ import BuyAndSell from "./BuyAndSell";
 import sell from "../../../../../Images/image/images-removebg-preview.png";
 import buy from "../../../../../Images/image/buy-removebg-preview.png";
 import { FaUpload } from "react-icons/fa";
+import SellModal from "./SellModal";
 
 const BuyAndSells = () => {
   const [products, setProducts] = useState([]);
@@ -14,9 +15,6 @@ const BuyAndSells = () => {
       .then((data) => setProducts(data));
   }, []);
 
-  const handleClickSelling = () => {
-    console.log("sale");
-  };
   return (
     <div className="mx-20 mb-20 bg-pink-100 rounded-lg mt-14">
       <div className="flex justify-center">
@@ -36,13 +34,18 @@ const BuyAndSells = () => {
           <h1 className="text-5xl mb-14  font-extrabold pt-5">
             Buying And Selling
           </h1>
-          <button
-            onClick={handleClickSelling}
+
+          {/* modal start */}
+          <label
+            htmlFor="sellingModal"
             className="btn btn-primary text-xl text-white ml-20 font-bold"
           >
             Selling You Products{" "}
             <FaUpload className="text-white ml-5 text-3xl" />
-          </button>
+          </label>
+          <SellModal />
+
+          {/* modal end */}
         </div>
         <img
           data-aos="fade-up"
