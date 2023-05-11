@@ -15,7 +15,7 @@ const AgriculturalEquipments = () => {
       <h1 className="text-5xl mb-14 text-center font-extrabold">
         Agricultural Equipment
       </h1>
-      <div className="grid grid-cols-3 gap-10 bg-lime-100 rounded-lg p-2">
+      <div className="grid grid-cols-4 gap-6 bg-lime-100 rounded-lg p-2">
         {" "}
         {products.map((product) => (
           <AgriculturalEquipment />

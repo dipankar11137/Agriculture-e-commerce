@@ -4,6 +4,7 @@ import AgriculturalMedicines from "./HomeSection/Agricultural Medicine/Agricultu
 import Add from "./HomeSection/Add/Add";
 import AgriculturalEquipments from "./HomeSection/AgriculturalEquipment/AgriculturalEquipments";
 import BuyAndSells from "./HomeSection/BuyAndSell/BuyAndSells";
+import Footer from "../../Share/Footer";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <BuyAndSells />
       <AgriculturalMedicines />
       <AgriculturalEquipments />
+      <Footer />
     </div>
   );
 };

@@ -20,6 +20,7 @@ const AgriculturalMedicine = () => {
         <div className="p-3 mt-3  pb-10">
           <h2 className="text-2xl font-bold">hello</h2>
           <h2 className="text-xl font-semibold">Price</h2>
+          <h2 className="text-xl font-semibold">Made in </h2>
           <h1>Description</h1>
         </div>
       </div>
