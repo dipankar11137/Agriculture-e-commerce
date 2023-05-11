@@ -9,7 +9,7 @@ const AgriculturalEquipment = () => {
       data-aos-duration="1000"
       data-aos-easing="ease-in-out"
       data-aos-mirror="true"
-      data-aos-once="false"
+      data-aos-once="true"
       data-aos-anchor-placement="top-center"
       className="container  bg-white shadow-2xl hover:shadow-inner rounded-lg "
     >

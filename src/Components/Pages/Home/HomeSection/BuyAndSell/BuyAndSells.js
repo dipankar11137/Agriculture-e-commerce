@@ -41,7 +41,7 @@ const BuyAndSells = () => {
             className="btn btn-primary text-xl text-white ml-20 font-bold"
           >
             Selling You Products{" "}
-            <FaUpload className="text-white ml-5 text-3xl" />
+            <FaUpload className="text-white ml-5 text-3xl animate-bounce" />
           </label>
           <SellModal />
 
@@ -50,7 +50,7 @@ const BuyAndSells = () => {
         <img
           data-aos="fade-up"
           data-aos-offset="200"
-          data-aos-delay="50"
+          //   data-aos-delay="50"
           data-aos-duration="1000"
           data-aos-easing="ease-in-out"
           data-aos-mirror="true"
@@ -60,7 +60,7 @@ const BuyAndSells = () => {
           alt=""
         />
       </div>
-      <div className="grid grid-cols-3 gap-10 bg-green-50 rounded-lg p-2">
+      <div className="grid grid-cols-5 mt-5 gap-7 bg-green-50 rounded-lg p-2">
         {" "}
         {products.map((product) => (
           <BuyAndSell />

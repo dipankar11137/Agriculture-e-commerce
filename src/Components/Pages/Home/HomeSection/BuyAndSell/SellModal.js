@@ -16,42 +16,40 @@ const SellModal = () => {
   const imageHostKey = "9a79ac160a3fcabfcd224dc71e011834";
 
   const submitProduct = (data, image) => {
-    const updateProduct = {
-      ...data,
-      image,
-      category,
-    };
-
-    fetch(``, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updateProduct),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        toast.success("Successfully Add This Product");
-        reset();
-      });
-    console.log(updateProduct);
+    // const updateProduct = {
+    //   ...data,
+    //   image,
+    //   category,
+    // };
+    // fetch(``, {
+    //   method: "PUT",
+    //   headers: {
+    //     "content-type": "application/json",
+    //   },
+    //   body: JSON.stringify(updateProduct),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     toast.success("Successfully Add This Product");
+    //     reset();
+    //   });
+    // console.log(updateProduct);
   };
 
   const onSubmit = (data) => {
-    const image = data.image[0];
-    const formData = new FormData();
-    formData.append("image", image);
-    const url = `https://api.imgbb.com/1/upload?expiration=600&key=${imageHostKey}`;
-
-    fetch(url, {
-      method: "POST",
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((imageData) => {
-        const image = imageData.data.url;
-        submitProduct(data, image);
-      });
+    // const image = data.image[0];
+    // const formData = new FormData();
+    // formData.append("image", image);
+    // const url = `https://api.imgbb.com/1/upload?expiration=600&key=${imageHostKey}`;
+    // fetch(url, {
+    //   method: "POST",
+    //   body: formData,
+    // })
+    //   .then((res) => res.json())
+    //   .then((imageData) => {
+    //     const image = imageData.data.url;
+    //     submitProduct(data, image);
+    //   });
   };
   return (
     <div className="">
