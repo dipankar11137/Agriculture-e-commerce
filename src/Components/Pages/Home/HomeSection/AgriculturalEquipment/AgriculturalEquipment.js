@@ -1,14 +1,12 @@
 import React from "react";
-import "../../../../CSS/CardStyle.css";
-import "../../../../CSS/ImageStyle.css";
 
-const AgriculturalMedicine = () => {
+const AgriculturalEquipment = () => {
   return (
     <div className="container  bg-white shadow-2xl hover:shadow-inner rounded-lg ">
       <div>
         <img
-          className="rounded-lg pic-style"
-          src="https://3.imimg.com/data3/BO/BY/MY-13687334/kai-agro-80-plus-500x500.jpg"
+          className="rounded-lg pic-style w-full"
+          src="https://acimotors-bd.com/assets/images/product/power-tiller/regular-16-v-2.0.jpg"
           alt=""
         />
         <div className="p-3">
@@ -24,4 +22,4 @@ const AgriculturalMedicine = () => {
   );
 };
 
-export default AgriculturalMedicine;
+export default AgriculturalEquipment;
