@@ -4,7 +4,7 @@ import call from "../../../../../Images/image/call-removebg-preview.png";
 
 const Contact = () => {
   return (
-    <div className="bg-slate-100 mt-48 shadow-lg">
+    <div className="bg-green-900 mt-48  text-white">
       <div className=" mx-20 grid grid-cols-3 ">
         <div className="p-4 col-span-2">
           <h1 className="py-4 text-4xl font-bold">
@@ -14,8 +14,8 @@ const Contact = () => {
             <button className="buttonStyle py-4 px-8 hover:bg-primary hover:text-white text-3xl rounded-xl border-4 border-primary ml-72 mt-5">
               Request To Contact
             </button>
-            <button className="flex py-4 px-8 hover:bg-primary hover:text-white text-3xl rounded-xl border-4 border-primary ml-14 mt-5">
-              <FaPhoneAlt className="mt-1" />
+            <button className="flex py-4 px-8 hover:bg-primary  hover:text-white text-3xl rounded-xl border-4 border-primary ml-14 mt-5">
+              <FaPhoneAlt className="mt-1 animate-bounce " />
               <span className="ml-3">16216</span>
             </button>
           </div>

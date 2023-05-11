@@ -92,7 +92,7 @@ const Navbar = () => {
   );
   return (
     <div
-      className="px-20 bg-green-900"
+      className="px-20 bg-accent"
       // style={{
       //   background: `url("https://cdn.wallpapersafari.com/61/31/Mo8nwL.jpg")`,
       //   backgroundSize: "cover",
