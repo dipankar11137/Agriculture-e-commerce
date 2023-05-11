@@ -5,6 +5,7 @@ import Add from "./HomeSection/Add/Add";
 import AgriculturalEquipments from "./HomeSection/AgriculturalEquipment/AgriculturalEquipments";
 import BuyAndSells from "./HomeSection/BuyAndSell/BuyAndSells";
 import Footer from "../../Share/Footer";
+import Contact from "./HomeSection/Contact/Contact";
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <BuyAndSells />
       <AgriculturalMedicines />
       <AgriculturalEquipments />
+      <Contact />
       <Footer />
     </div>
   );
