@@ -11,7 +11,7 @@ const Navbar = () => {
     signOut(auth);
   };
 
-  const [selectedButton, setSelectedButton] = useState("Button 1");
+  const [selectedButton, setSelectedButton] = useState("");
 
   const menuItem = (
     <>
