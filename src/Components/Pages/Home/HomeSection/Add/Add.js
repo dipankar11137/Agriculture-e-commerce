@@ -5,8 +5,8 @@ const Add = () => {
   return (
     <div className="flex">
       <img
-        className="w-full h-[250px] "
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrm4ZV8KIyiq5OvTrmvMh32uDEHnx4V1bNjYc23yWm2MZyan9G45w3ds6T4wkzxmDV8Q&usqp=CAU"
+        className="w-full h-[250px] ml-6"
+        src="https://t3.ftcdn.net/jpg/01/63/13/30/360_F_163133061_TlMOMqgxAvBuwzLAjxOQ8v1FQ3OexfRG.jpg"
         alt=""
       />
       <img className="w-[300px] h-[250px] animate-bounce" src={off} alt="" />

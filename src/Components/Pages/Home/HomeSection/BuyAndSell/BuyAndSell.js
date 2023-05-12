@@ -3,13 +3,13 @@ import React from "react";
 const BuyAndSell = () => {
   return (
     <div
-      //   data-aos="zoom-in-down"
-      //   data-aos-offset="200"
-      //   data-aos-delay="50"
-      //   data-aos-duration="1000"
-      //   data-aos-easing="ease-in-out"
-      //   //   data-aos-mirror="true"
-      //   data-aos-anchor-placement="top-center"
+      data-aos="zoom-in-up"
+      data-aos-offset="200"
+      data-aos-delay="50"
+      data-aos-duration="1000"
+      data-aos-easing="ease-in-out"
+      data-aos-once="true"
+      data-aos-anchor-placement="top-center"
       className="container  bg-white shadow-2xl hover:shadow-inner rounded-lg hover:bg-green-900 hover:text-white hover:cursor-pointer"
     >
       <div>
