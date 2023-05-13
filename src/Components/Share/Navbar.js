@@ -43,18 +43,6 @@ const Navbar = () => {
       {user && (
         <>
           <li
-            onClick={() => setSelectedButton("Button 3")}
-            className={
-              selectedButton === "Button 3"
-                ? "bg-primary text-white rounded-lg"
-                : ""
-            }
-          >
-            <Link to="/addItem" className="font-bold  text-xl ">
-              Add Items
-            </Link>
-          </li>
-          <li
             onClick={() => setSelectedButton("Button 4")}
             className={
               selectedButton === "Button 4"
