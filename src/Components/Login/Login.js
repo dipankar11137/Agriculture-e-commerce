@@ -8,11 +8,9 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 // import axios from "axios";
 import Loading from "../Share/Loading";
-import login from "../../Images/Login/login.jpg";
-import { toast } from "react-toastify";
 
 const Login = () => {
-  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+  const [gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const {
     register,
     formState: { errors },
@@ -43,36 +41,45 @@ const Login = () => {
     );
   }
   const onSubmit = async (data) => {
-    const email = data.email;
     await signInWithEmailAndPassword(data.email, data.password);
-    toast.success("Successfully Login");
-    // const { accessToken } = await axios.post(
-    //   "https://boxberry.onrender.com/login",
-    //   {
-    //     email,
-    //   }
-    // );
-    // console.log(accessToken);
   };
 
   return (
-    <div className="flex justify-center h-screen bg-slate-700">
-      <div className="w-4/12 pt-40">
-        <img className="w-11/12 rounded-xl" src={login} alt="" />
-      </div>
-      <div className="flex justify-center items-center ">
-        <div className="card w-96 shadow-2xl bg-violet-50">
-          <div className="card-body">
-            <h2 className="text-center text-2xl">Login</h2>
+    <div
+      style={{
+        backgroundImage: `url("https://png.pngtree.com/background/20210714/original/pngtree-abstract-particles-background-with-geometric-connection-concept-vector-illustration-picture-image_1233144.jpg")`,
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        width: "100%",
+        height: "100vp",
+      }}
+      className="flex justify-center h-screen bg-slate-700"
+    >
+      <div className="mt-32  ">
+        <div
+          style={{
+            backgroundImage: `url("https://media.istockphoto.com/id/108224668/photo/open-book-by-lamp-light.jpg?b=1&s=170667a&w=0&k=20&c=LswLXyD7KMPwO2gzKnnC2la52R4RIsHOJIJT0lWaP24=")`,
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            width: "100%",
+            boxShadow: "2px ",
+          }}
+          className="card w-96 shadow-2xl bg-violet-50"
+        >
+          <div className="card-body text-white">
+            <h2 className="text-center text-3xl font-bold">Login</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="form-control w-full max-w-xs">
+              <div className="form-control w-full ">
                 <label className="label">
-                  <span className="label-text">Email</span>
+                  <span className="label-text text-white">Email</span>
                 </label>
                 <input
+                  style={{ width: "400px" }}
                   type="email"
                   placeholder="Your Email"
-                  className="input input-bordered bg-white w-full max-w-xs"
+                  className="input input-bordered bg-white  w-96 "
                   {...register("email", {
                     required: {
                       value: true,
@@ -97,14 +104,14 @@ const Login = () => {
                   )}
                 </label>
               </div>
-              <div className="form-control w-full max-w-xs">
+              <div className="form-control w-full ">
                 <label className="label">
-                  <span className="label-text">Password</span>
+                  <span className="label-text text-white">Password</span>
                 </label>
                 <input
                   type="password"
                   placeholder="Password"
-                  className="input input-bordered bg-white w-full max-w-xs"
+                  className="input input-bordered text-black font-bold bg-white w-full "
                   {...register("password", {
                     required: {
                       value: true,
@@ -137,21 +144,15 @@ const Login = () => {
                 value="Login"
               />
             </form>
-            <p>
-              <small>
-                New to BoxBerry Motor?{" "}
-                <Link to="/createAccount" className="text-orange-600 font-bold">
-                  Create New Account
-                </Link>
-              </small>
-            </p>
+            <p></p>
             <div className="divider">OR</div>
-            <button
-              onClick={() => signInWithGoogle()}
-              className="btn btn-outline font-black"
+
+            <Link
+              to="/createAccount"
+              className="btn btn-outline font-black bg-lime-500 "
             >
-              Continue With Google
-            </button>
+              Create New Account
+            </Link>
           </div>
         </div>
       </div>

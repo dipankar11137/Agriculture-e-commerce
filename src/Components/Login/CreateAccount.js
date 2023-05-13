@@ -1,4 +1,3 @@
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import React from "react";
 import {
   useCreateUserWithEmailAndPassword,
@@ -6,27 +5,23 @@ import {
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../firebase.init";
-import login from "../../Images/Login/login.jpg";
 
 const CreateAccount = () => {
-  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+  const [signInWithGoogle, gUser] = useSignInWithGoogle(auth);
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
 
-  const [createUserWithEmailAndPassword, user, loading, error] =
+  const [createUserWithEmailAndPassword] =
     useCreateUserWithEmailAndPassword(auth);
 
-  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+  const [updateProfile] = useUpdateProfile(auth);
   const navigate = useNavigate();
-  const location = useLocation();
-
-  let from = location.state?.from?.pathname || "/";
 
   let signInError;
   if (gUser) {
@@ -64,19 +59,18 @@ const CreateAccount = () => {
   return (
     <div
       style={{
-        backgroundImage: `url("https://png.pngtree.com/background/20210714/original/pngtree-abstract-particles-background-with-geometric-connection-concept-vector-illustration-picture-image_1233144.jpg")`,
+        backgroundImage: `url("https://w.forfun.com/fetch/ee/ee26dddc94efa54b68bccf9b53687290.jpeg")`,
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         width: "100%",
-        height: "100vp",
       }}
-      className="flex justify-center  bg-slate-700"
+      className="flex justify-center  bg-slate-700 h-screen"
     >
-      <div className="flex justify-center items-center  mt-4 ">
+      <div className="flex justify-center items-center mt-[-50px] ">
         <div
           style={{
-            backgroundImage: `url("https://img.freepik.com/premium-psd/black-white-glow-dust-particle-abstract-background_35672-1431.jpg")`,
+            backgroundImage: `url("https://static.vecteezy.com/system/resources/thumbnails/006/422/170/original/hairline-motion-with-black-background-good-for-wallpaper-screensaver-free-video.jpg")`,
             backgroundPosition: "center",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
@@ -170,30 +164,7 @@ const CreateAccount = () => {
                   )}
                 </label>
               </div>
-              {/* photo */}
-              <div className="form-control w-full   ">
-                <label className="label">
-                  <span className="label-text text-white">Image</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Your Phone URL"
-                  className="input input-bordered bg-white w-full   text-black"
-                  {...register("photo", {
-                    required: {
-                      value: true,
-                      message: "Photo is Required",
-                    },
-                  })}
-                />
-                <label className="label">
-                  {errors.photo?.type === "required" && (
-                    <span className="label-text-alt text-red-500">
-                      {errors.photo.message}
-                    </span>
-                  )}
-                </label>
-              </div>
+
               <div className="form-control w-full   ">
                 <label className="label">
                   <span className="label-text text-white">Password</span>
@@ -228,7 +199,7 @@ const CreateAccount = () => {
               </div>
               {signInError}
               <input
-                className="btn w-full text-white"
+                className="btn btn-primary w-full text-white text-xl"
                 type="submit"
                 value="Sign Up"
               />
@@ -241,7 +212,7 @@ const CreateAccount = () => {
 
             <Link
               to="/login"
-              className="btn btn-outline  bg-lime-500 text-black font-bold"
+              className="btn btn-accent text-white text-xl font-bold"
             >
               Please Login
             </Link>
