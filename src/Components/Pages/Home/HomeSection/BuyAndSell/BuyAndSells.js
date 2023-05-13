@@ -22,11 +22,11 @@ const BuyAndSells = () => {
           data-aos="fade-up"
           data-aos-offset="200"
           data-aos-delay="50"
-          data-aos-duration="1000"
+          data-aos-duration="3000"
           data-aos-easing="ease-in-out"
           data-aos-mirror="true"
           data-aos-once="false"
-          className="h-56 animate-bounce"
+          className="h-56 "
           src={buy}
           alt=""
         />
@@ -51,11 +51,11 @@ const BuyAndSells = () => {
           data-aos="fade-up"
           data-aos-offset="200"
           //   data-aos-delay="50"
-          data-aos-duration="1000"
+          data-aos-duration="3000"
           data-aos-easing="ease-in-out"
           data-aos-mirror="true"
           data-aos-once="false"
-          className="h-56 animate-bounce"
+          className="h-56 "
           src={sell}
           alt=""
         />

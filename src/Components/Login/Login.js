@@ -47,7 +47,7 @@ const Login = () => {
   return (
     <div
       style={{
-        backgroundImage: `url("https://png.pngtree.com/background/20210714/original/pngtree-abstract-particles-background-with-geometric-connection-concept-vector-illustration-picture-image_1233144.jpg")`,
+        backgroundImage: `url("https://w.forfun.com/fetch/ee/ee26dddc94efa54b68bccf9b53687290.jpeg")`,
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
@@ -59,7 +59,7 @@ const Login = () => {
       <div className="mt-32  ">
         <div
           style={{
-            backgroundImage: `url("https://media.istockphoto.com/id/108224668/photo/open-book-by-lamp-light.jpg?b=1&s=170667a&w=0&k=20&c=LswLXyD7KMPwO2gzKnnC2la52R4RIsHOJIJT0lWaP24=")`,
+            backgroundImage: `url("https://c4.wallpaperflare.com/wallpaper/297/878/431/artstation-digital-art-building-night-moon-hd-wallpaper-preview.jpg")`,
             backgroundPosition: "center",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
@@ -139,7 +139,7 @@ const Login = () => {
 
               {signInError}
               <input
-                className="btn btn-orange-500 w-full text-white"
+                className="btn btn-primary w-full text-white"
                 type="submit"
                 value="Login"
               />
@@ -149,7 +149,7 @@ const Login = () => {
 
             <Link
               to="/createAccount"
-              className="btn btn-outline font-black bg-lime-500 "
+              className="btn btn-accent text-xl text-white font-bold  "
             >
               Create New Account
             </Link>

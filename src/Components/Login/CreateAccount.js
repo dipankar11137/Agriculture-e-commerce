@@ -70,7 +70,7 @@ const CreateAccount = () => {
       <div className="flex justify-center items-center mt-[-50px] ">
         <div
           style={{
-            backgroundImage: `url("https://static.vecteezy.com/system/resources/thumbnails/006/422/170/original/hairline-motion-with-black-background-good-for-wallpaper-screensaver-free-video.jpg")`,
+            backgroundImage: `url("https://c4.wallpaperflare.com/wallpaper/297/878/431/artstation-digital-art-building-night-moon-hd-wallpaper-preview.jpg")`,
             backgroundPosition: "center",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
