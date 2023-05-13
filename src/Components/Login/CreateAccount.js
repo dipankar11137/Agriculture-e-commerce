@@ -33,47 +33,71 @@ const CreateAccount = () => {
     navigate("/");
   }
 
-  const createDBUser = (name, email) => {
-    // fetch(`https://boxberry.onrender.com/create-user/${email}`, {
-    //   method: "PUT",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify({ name, email }),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //   });
+  const createDBUser = (data) => {
+    const updateData = {
+      name: data?.name,
+      email: data?.email,
+      img: data?.photo,
+    };
+    fetch(`http://localhost:5000/create-user/${data?.email}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ updateData }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data);
+      });
+    // console.log(data);
   };
 
   const onSubmit = (data) => {
-    // console.log(data.email, data.password, data.name);
+    createDBUser(data);
     createUserWithEmailAndPassword(data.email, data.password);
+    signInWithGoogle(data.email, data.password);
     updateProfile({ displayName: data.name });
-    createDBUser(data.name, data.email);
     toast.success("Updated profile");
     navigate("/");
   };
   return (
-    <div className="flex justify-center h-screen bg-slate-700">
-      <div className="w-4/12 pt-40">
-        <img className="w-11/12 rounded-xl" src={login} alt="" />
-      </div>
-      <div className="flex h-screen justify-center items-center  ">
-        <div className="card w-96 shadow-xl bg-violet-50">
-          <div className="card-body">
+    <div
+      style={{
+        backgroundImage: `url("https://png.pngtree.com/background/20210714/original/pngtree-abstract-particles-background-with-geometric-connection-concept-vector-illustration-picture-image_1233144.jpg")`,
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        width: "100%",
+        height: "100vp",
+      }}
+      className="flex justify-center  bg-slate-700"
+    >
+      <div className="flex justify-center items-center  mt-4 ">
+        <div
+          style={{
+            backgroundImage: `url("https://img.freepik.com/premium-psd/black-white-glow-dust-particle-abstract-background_35672-1431.jpg")`,
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            width: "100%",
+            height: "100vp",
+          }}
+          className="card w-96 shadow-2xl bg-violet-200"
+        >
+          <div className="card-body text-white">
             <h2 className="text-center text-2xl font-bold">SignUp</h2>
 
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="form-control w-full max-w-xs">
+              <div className="form-control w-full   ">
                 <label className="label">
-                  <span className="label-text">Name</span>
+                  <span className="label-text text-white">Name</span>
                 </label>
                 <input
+                  style={{ width: "400px" }}
                   type="text"
                   placeholder="Your name"
-                  className="input input-bordered bg-white w-full max-w-xs"
+                  className="input input-bordered bg-white w-full  text-black "
                   {...register("name", {
                     required: {
                       value: true,
@@ -89,14 +113,15 @@ const CreateAccount = () => {
                   )}
                 </label>
               </div>
-              <div className="form-control w-full max-w-xs">
+              {/* email */}
+              <div className="form-control w-full   ">
                 <label className="label">
-                  <span className="label-text">Email</span>
+                  <span className="label-text text-white">Email</span>
                 </label>
                 <input
                   type="email"
                   placeholder="Your Email"
-                  className="input input-bordered bg-white w-full max-w-xs"
+                  className="input input-bordered bg-white w-full  text-black "
                   {...register("email", {
                     required: {
                       value: true,
@@ -121,14 +146,62 @@ const CreateAccount = () => {
                   )}
                 </label>
               </div>
-              <div className="form-control w-full max-w-xs">
+              {/* Phone */}
+              <div className="form-control w-full   ">
                 <label className="label">
-                  <span className="label-text">Password</span>
+                  <span className="label-text text-white">Phone</span>
+                </label>
+                <input
+                  type="phone"
+                  placeholder="Write Your Phone Number"
+                  className="input input-bordered bg-white w-full   text-black"
+                  {...register("phone", {
+                    required: {
+                      value: true,
+                      message: "Phone is Required",
+                    },
+                  })}
+                />
+                <label className="label">
+                  {errors.phone?.type === "required" && (
+                    <span className="label-text-alt text-red-500">
+                      {errors.phone.message}
+                    </span>
+                  )}
+                </label>
+              </div>
+              {/* photo */}
+              <div className="form-control w-full   ">
+                <label className="label">
+                  <span className="label-text text-white">Image</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Your Phone URL"
+                  className="input input-bordered bg-white w-full   text-black"
+                  {...register("photo", {
+                    required: {
+                      value: true,
+                      message: "Photo is Required",
+                    },
+                  })}
+                />
+                <label className="label">
+                  {errors.photo?.type === "required" && (
+                    <span className="label-text-alt text-red-500">
+                      {errors.photo.message}
+                    </span>
+                  )}
+                </label>
+              </div>
+              <div className="form-control w-full   ">
+                <label className="label">
+                  <span className="label-text text-white">Password</span>
                 </label>
                 <input
                   type="password"
                   placeholder="Password"
-                  className="input input-bordered bg-white w-full max-w-xs"
+                  className="input input-bordered text-black font-bold bg-white w-full   "
                   {...register("password", {
                     required: {
                       value: true,
@@ -161,25 +234,21 @@ const CreateAccount = () => {
               />
             </form>
             <p>
-              <small>
-                Already Have an Account ?{" "}
-                <Link to="/login" className="text-orange-600 font-bold">
-                  Please Login
-                </Link>
-              </small>
+              <small></small>
             </p>
             <div className="divider">OR</div>
-            <button
-              onClick={() => signInWithGoogle()}
-              className="btn btn-outline font-black bg-orange-600 text-white"
+            <p className="ml-2">Already Have An Account</p>
+
+            <Link
+              to="/login"
+              className="btn btn-outline  bg-lime-500 text-black font-bold"
             >
-              Continue With Google
-            </button>
+              Please Login
+            </Link>
           </div>
         </div>
       </div>
     </div>
   );
 };
-
 export default CreateAccount;

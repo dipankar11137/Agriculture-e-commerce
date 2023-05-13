@@ -69,7 +69,7 @@ const SellModal = () => {
                 {/* name */}
                 <label className="label">
                   <span className="label-text  text-xl font-semibold">
-                    Book Name
+                    Product Name
                   </span>
                 </label>
                 <input
@@ -79,7 +79,7 @@ const SellModal = () => {
                   {...register("name", {
                     required: {
                       value: true,
-                      message: "Book Name is Required",
+                      message: "Product Name is Required",
                     },
                   })}
                 />

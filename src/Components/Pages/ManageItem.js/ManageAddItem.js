@@ -1,8 +1,9 @@
 import React from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const ManageAddItem = () => {
-  const category = "Buying And Selling";
+  const [category, setCategory] = useState("");
 
   const {
     register,
