@@ -1,17 +1,17 @@
 import React from "react";
-import Banner from "./HomeSection/Banner/Banner";
+import Footer from "../../Share/Footer";
 import AgriculturalMedicines from "./HomeSection/Agricultural Medicine/AgriculturalMedicines";
-import Add from "./HomeSection/Add/Add";
 import AgriculturalEquipments from "./HomeSection/AgriculturalEquipment/AgriculturalEquipments";
 import BuyAndSells from "./HomeSection/BuyAndSell/BuyAndSells";
-import Footer from "../../Share/Footer";
 import Contact from "./HomeSection/Contact/Contact";
+import BackgroundImage from "./Test/BackgroundImage";
 
 const Home = () => {
   return (
     <div>
-      <Banner />
-      <Add />
+      <BackgroundImage/>
+      {/* <Banner /> */}
+      {/* <Add /> */}
       <BuyAndSells />
       <AgriculturalMedicines />
       <AgriculturalEquipments />
