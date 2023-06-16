@@ -11,11 +11,14 @@ const BackgroundImage = () => {
       <video autoPlay muted loop src={video} className="videoEdit"></video>
 
       <div class="content mx-72">
-        <div className="grid grid-cols-4">
+        <h1 className="text-6xl text-center font-bold">
+          Discover a world of fresh and sustainable produce at your fingertips.
+        </h1>
+        <div className="grid grid-cols-4 bColor">
           <div className="w-72 flex justify-center items-center">
             <div>
               <img
-                className="ml-10 h-20 mb-10"
+                className="ml-10 h-20 mb-10 "
                 src="https://ifarmer.asia/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdW84IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--965c07eb4d2495701c06699460ba04b3a75e275d/Farm%20Produce.png"
                 alt=""
               />

@@ -1,12 +1,17 @@
 
 .content {
   position: absolute;
-  top: 580px; 
-  background: rgba(0, 0, 0, 0.5);
+  top: 250px; 
+
   color: #f1f1f1;
   /* width: 100%; */
   padding: 20px;
+  margin-left: 400px;
 }
-
+.bColor{
+  margin-top: 130px;
+  background: rgba(0, 0, 0, 0.5);
+   padding: 20px;
+}
 
 
