@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 const SellModal = () => {
   const category = 'Buying And Selling';
@@ -18,20 +19,19 @@ const SellModal = () => {
       ...data,
       image,
     };
-    console.log(updateProduct);
-    // fetch(``, {
-    //   method: "PUT",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(updateProduct),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     toast.success("Successfully Add This Product");
-    //     reset();
-    //   });
-    // console.log(updateProduct);
+
+    fetch(`http://localhost:5000/buyAndSells`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(updateProduct),
+    })
+      .then(res => res.json())
+      .then(data => {
+        toast.success('Successfully Add This Product');
+        reset();
+      });
   };
 
   const onSubmit = data => {
