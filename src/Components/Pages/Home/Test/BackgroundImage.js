@@ -10,7 +10,7 @@ const BackgroundImage = () => {
     <div>
       <video autoPlay muted loop src={video} className="videoEdit"></video>
 
-      <div class="content mx-72">
+      <div class="content mx-72 ">
         <h1 className="text-6xl text-center font-bold">
           Discover a world of fresh and sustainable produce at your fingertips.
         </h1>

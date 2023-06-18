@@ -1,19 +1,17 @@
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import BuyAndSell from "./BuyAndSell";
-import sell from "../../../../../Images/image/images-removebg-preview.png";
-import buy from "../../../../../Images/image/buy-removebg-preview.png";
-import { FaUpload } from "react-icons/fa";
-import SellModal from "./SellModal";
+import React, { useEffect, useState } from 'react';
+import { FaUpload } from 'react-icons/fa';
+import buy from '../../../../../Images/image/buy-removebg-preview.png';
+import sell from '../../../../../Images/image/images-removebg-preview.png';
+import BuyAndSell from './BuyAndSell';
+import SellModal from './SellModal';
 
 const BuyAndSells = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("products.json")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
-  }, []);
+    fetch('products.json')
+      .then(res => res.json())
+      .then(data => setProducts(data));
+  }, [products]);
 
   return (
     <div className="mx-20 mb-20 bg-pink-100 rounded-lg mt-14">
@@ -40,7 +38,7 @@ const BuyAndSells = () => {
             htmlFor="sellingModal"
             className="btn btn-primary text-xl text-white ml-20 font-bold"
           >
-            Selling You Products{" "}
+            Selling You Products{' '}
             <FaUpload className="text-white ml-5 text-3xl animate-bounce" />
           </label>
           <SellModal />
@@ -61,8 +59,8 @@ const BuyAndSells = () => {
         />
       </div>
       <div className="grid grid-cols-5 mt-5 gap-7 bg-green-50 rounded-lg p-2">
-        {" "}
-        {products.map((product) => (
+        {' '}
+        {products.map(product => (
           <BuyAndSell />
         ))}
       </div>
