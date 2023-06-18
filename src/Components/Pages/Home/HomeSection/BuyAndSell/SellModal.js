@@ -7,6 +7,7 @@ import auth from '../../../../../firebase.init';
 const SellModal = () => {
   const [users] = useAuthState(auth);
   const email = users?.email;
+  const userName = users?.displayName;
   console.log(users);
   const category = 'Buying And Selling';
 
@@ -23,6 +24,9 @@ const SellModal = () => {
     const updateProduct = {
       ...data,
       image,
+      email,
+      category,
+      userName,
     };
 
     fetch(`http://localhost:5000/buyAndSells`, {

@@ -32,14 +32,14 @@ const CreateAccount = () => {
     const updateData = {
       name: data?.name,
       email: data?.email,
-      img: data?.photo,
+      phone: data?.phone,
     };
     fetch(`http://localhost:5000/create-user/${data?.email}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',
       },
-      body: JSON.stringify({ updateData }),
+      body: JSON.stringify(updateData),
     })
       .then(res => res.json())
       .then(data => {
@@ -49,12 +49,11 @@ const CreateAccount = () => {
     // console.log(data);
   };
 
-  const onSubmit = data => {
-    createDBUser(data);
-    createUserWithEmailAndPassword(data.email, data.password);
-    signInWithGoogle(data.email, data.password);
-    updateProfile({ displayName: data.name });
-    updateProfile({ phoneNumber: data.phone });
+  const onSubmit = async data => {
+    await createDBUser(data);
+    await createUserWithEmailAndPassword(data.email, data.password);
+    await signInWithGoogle(data.email, data.password);
+    await updateProfile({ displayName: data.name, phoneNumber: data.phone });
   };
   return (
     <div

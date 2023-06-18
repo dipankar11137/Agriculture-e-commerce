@@ -14,7 +14,7 @@ const BuyAndSells = () => {
   }, [products]);
 
   return (
-    <div className="mx-20 mb-20 bg-pink-100 rounded-lg mt-14">
+    <div className="mx-16 mb-20 bg-pink-100 rounded-lg mt-14">
       <div className="flex justify-center">
         <img
           data-aos="fade-up"
@@ -58,7 +58,7 @@ const BuyAndSells = () => {
           alt=""
         />
       </div>
-      <div className="grid grid-cols-5 mt-5 gap-7 bg-green-50 rounded-lg p-2">
+      <div className="grid grid-cols-5 mt-5 gap-7 bg-green-50 rounded-lg p-4">
         {' '}
         {products.map(product => (
           <BuyAndSell />
