@@ -28,33 +28,33 @@ const CreateAccount = () => {
     navigate("/");
   }
 
-  const createDBUser = (data) => {
+  const createDBUser = data => {
     const updateData = {
       name: data?.name,
       email: data?.email,
       img: data?.photo,
     };
     fetch(`http://localhost:5000/create-user/${data?.email}`, {
-      method: "PUT",
+      method: 'PUT',
       headers: {
-        "content-type": "application/json",
+        'content-type': 'application/json',
       },
       body: JSON.stringify({ updateData }),
     })
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data);
+      .then(res => res.json())
+      .then(data => {
+        toast.success('Updated profile');
+        navigate('/');
       });
     // console.log(data);
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = data => {
     createDBUser(data);
     createUserWithEmailAndPassword(data.email, data.password);
     signInWithGoogle(data.email, data.password);
     updateProfile({ displayName: data.name });
-    toast.success("Updated profile");
-    navigate("/");
+    updateProfile({ phoneNumber: data.phone });
   };
   return (
     <div

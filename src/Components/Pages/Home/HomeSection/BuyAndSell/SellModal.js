@@ -1,8 +1,13 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import auth from '../../../../../firebase.init';
 
 const SellModal = () => {
+  const [users] = useAuthState(auth);
+  const email = users?.email;
+  console.log(users);
   const category = 'Buying And Selling';
 
   const {
