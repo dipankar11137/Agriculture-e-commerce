@@ -1,10 +1,8 @@
-import React from "react";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
+import React from 'react';
+import { useForm } from 'react-hook-form';
 
 const SellModal = () => {
-  const category = "Buying And Selling";
+  const category = 'Buying And Selling';
 
   const {
     register,
@@ -13,14 +11,14 @@ const SellModal = () => {
     reset,
   } = useForm();
 
-  const imageHostKey = "9a79ac160a3fcabfcd224dc71e011834";
+  const imageHostKey = '9a79ac160a3fcabfcd224dc71e011834';
 
   const submitProduct = (data, image) => {
-    // const updateProduct = {
-    //   ...data,
-    //   image,
-    //   category,
-    // };
+    const updateProduct = {
+      ...data,
+      image,
+    };
+    console.log(updateProduct);
     // fetch(``, {
     //   method: "PUT",
     //   headers: {
@@ -36,20 +34,20 @@ const SellModal = () => {
     // console.log(updateProduct);
   };
 
-  const onSubmit = (data) => {
-    // const image = data.image[0];
-    // const formData = new FormData();
-    // formData.append("image", image);
-    // const url = `https://api.imgbb.com/1/upload?expiration=600&key=${imageHostKey}`;
-    // fetch(url, {
-    //   method: "POST",
-    //   body: formData,
-    // })
-    //   .then((res) => res.json())
-    //   .then((imageData) => {
-    //     const image = imageData.data.url;
-    //     submitProduct(data, image);
-    //   });
+  const onSubmit = data => {
+    const image = data.image[0];
+    const formData = new FormData();
+    formData.append('image', image);
+    const url = `https://api.imgbb.com/1/upload?expiration=600&key=${imageHostKey}`;
+    fetch(url, {
+      method: 'POST',
+      body: formData,
+    })
+      .then(res => res.json())
+      .then(imageData => {
+        const image = imageData.data.url;
+        submitProduct(data, image);
+      });
   };
   return (
     <div className="">
@@ -76,15 +74,15 @@ const SellModal = () => {
                   type="text"
                   placeholder="Book Name"
                   className="input input-bordered lg:w-96 sm:w-full   hover:shadow-xl shadow-inner"
-                  {...register("name", {
+                  {...register('name', {
                     required: {
                       value: true,
-                      message: "Product Name is Required",
+                      message: 'Product Name is Required',
                     },
                   })}
                 />
                 <label className="label">
-                  {errors.name?.type === "required" && (
+                  {errors.name?.type === 'required' && (
                     <span className="label-text-alt text-red-500">
                       {errors?.name?.message}
                     </span>
@@ -99,15 +97,15 @@ const SellModal = () => {
                   type="file"
                   placeholder="Images URL"
                   className="input input-bordered bg-white w-full pt-2  hover:shadow-xl shadow-inner"
-                  {...register("image", {
+                  {...register('image', {
                     required: {
                       value: true,
-                      message: "Images is Required",
+                      message: 'Images is Required',
                     },
                   })}
                 />
                 <label className="label">
-                  {errors.img?.type === "required" && (
+                  {errors.img?.type === 'required' && (
                     <span className="label-text-alt text-red-500">
                       {errors?.img?.message}
                     </span>
@@ -124,15 +122,15 @@ const SellModal = () => {
                   type="text"
                   placeholder="Services Location"
                   className="input input-bordered bg-white w-full    hover:shadow-xl shadow-inner"
-                  {...register("location", {
+                  {...register('location', {
                     required: {
                       value: true,
-                      message: "Location is Required",
+                      message: 'Location is Required',
                     },
                   })}
                 />
                 <label className="label">
-                  {errors.location?.type === "required" && (
+                  {errors.location?.type === 'required' && (
                     <span className="label-text-alt text-red-500">
                       {errors?.location?.message}
                     </span>
@@ -148,15 +146,15 @@ const SellModal = () => {
                   type="text"
                   placeholder="Description"
                   className="input input-bordered bg-white w-full   h-20 pt-1 hover:shadow-xl shadow-inner"
-                  {...register("description", {
+                  {...register('description', {
                     required: {
                       value: true,
-                      message: "Description is Required",
+                      message: 'Description is Required',
                     },
                   })}
                 />
                 <label className="label">
-                  {errors.description?.type === "required" && (
+                  {errors.description?.type === 'required' && (
                     <span className="label-text-alt text-red-500">
                       {errors?.description?.message}
                     </span>
@@ -173,15 +171,15 @@ const SellModal = () => {
                   type="number"
                   placeholder="Price"
                   className="input input-bordered bg-white w-full    hover:shadow-xl shadow-inner"
-                  {...register("price", {
+                  {...register('price', {
                     required: {
                       value: true,
-                      message: "Price is Required",
+                      message: 'Price is Required',
                     },
                   })}
                 />
                 <label className="label">
-                  {errors.price?.type === "required" && (
+                  {errors.price?.type === 'required' && (
                     <span className="label-text-alt text-red-500">
                       {errors?.price?.message}
                     </span>
