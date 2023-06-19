@@ -22,19 +22,19 @@ const ManageItems = () => {
     const newQuantity =
       parseInt(event.target.quantity.value) + parseInt(singleProduct?.quantity);
     console.log(newQuantity);
-    // const updateQuantity = { quantity: newQuantity };
-    // fetch(`http://localhost:5000/bloodId/${singleProduct?._id}`, {
-    //   method: 'PUT',
-    //   headers: {
-    //     'content-type': 'application/json',
-    //   },
-    //   body: JSON.stringify(updateQuantity),
-    // })
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     toast.success('Restock Is Successfully');
-    //     event.target.reset();
-    //   });
+    const updateQuantity = { quantity: newQuantity };
+    fetch(`http://localhost:5000/buyAndSellsUpdate/${singleProduct?._id}`, {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(updateQuantity),
+    })
+      .then(res => res.json())
+      .then(data => {
+        toast.success('Restock Is Successfully');
+        event.target.reset();
+      });
   };
   // remove products
   const handleRemove = id => {
@@ -78,17 +78,18 @@ const ManageItems = () => {
         <table className="table w-full">
           {/* head */}
           <thead>
-            <tr>
+            <tr className="text-center font-bold">
               <th></th>
               <th>Name</th>
               <th>Category</th>
               <th>Owner Name</th>
               <th>Email</th>
-              <th>Location</th>
+              {/* <th>Location</th> */}
               <th>Description</th>
               <th>Quantity</th>
               <th>Price</th>
               <th>Update</th>
+              <th>Decrease</th>
               <th>Remove</th>
               {/* <th></th> */}
             </tr>

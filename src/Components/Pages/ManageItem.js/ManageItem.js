@@ -1,4 +1,5 @@
 import React from "react";
+import { AiFillMinusCircle } from 'react-icons/ai';
 import { FaEdit } from 'react-icons/fa';
 const ManageItem = ({
   product,
@@ -7,9 +8,10 @@ const ManageItem = ({
   handleEdit,
   singleProduct,
   handleRestock,
+  handleDecrease,
 }) => {
   return (
-    <tr>
+    <tr className="text-lg text-center">
       <th>{index}</th>
       <td>
         <div className="flex items-center space-x-3">
@@ -18,7 +20,7 @@ const ManageItem = ({
               <img src={product?.image} alt="Avatar Tailwind CSS Component" />
             </div>
           </div>
-          <div>
+          <div className="text-start">
             <div className="font-bold">{product?.name}</div>
             <div className="text-sm opacity-50">{product?.location}</div>
           </div>
@@ -28,7 +30,7 @@ const ManageItem = ({
       <td>{product?.category}</td>
       <td>{product?.userName}</td>
       <td>{product?.email}</td>
-      <td>{product?.location}</td>
+      {/* <td>{product?.location}</td> */}
       <td>{product?.description}</td>
       <td>
         {product?.quantity} {product?.weight}
@@ -86,12 +88,64 @@ const ManageItem = ({
         </div>
       </td>
       {/* handle edit end */}
+
+      {/* handle decrease start */}
+      <td className="">
+        <label
+          onClick={() => handleEdit(product?._id)}
+          for="my-modal-4"
+          className=" text-white  modal-button"
+        >
+          <AiFillMinusCircle className="  rounded-full text-5xl text-primary ml-10" />
+        </label>
+
+        <input type="checkbox" id="my-modal-4" className="modal-toggle" />
+        <div className="modal">
+          <div className="modal-box relative">
+            <label
+              for="my-modal-4"
+              className="btn btn-primary pt-1 text-white  btn-sm btn-circle absolute right-2 top-2"
+            >
+              ✕
+            </label>
+            <div>
+              <div className="card w-96 bg-base-100 ">
+                <div className="card-body appleProducts-center text-center">
+                  <h1 className="text-2xl font-bold">
+                    Name : {singleProduct.name}
+                  </h1>
+                  <form onSubmit={handleDecrease}>
+                    <input
+                      type="number"
+                      name="quantity"
+                      id=""
+                      placeholder="Enter a Number"
+                      className="input input-bordered input-error hover:border-lime-500"
+                    />
+
+                    <input
+                      type="submit"
+                      className=" ml-3 btn mt-2 btn-primary pt-1 text-white  font-bold rounded-lg"
+                      value="Decrease"
+                    />
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+      {/* handle decrease end */}
       <th>
         <button
           onClick={() => handleRemove(product?._id)}
-          className="btn btn-primary text-white btn-xs"
+          className=" text-white"
         >
-          Remove
+          <img
+            className="h-16 "
+            src="https://app.tryzulu.com/assets/static/images/delete-gif-dark-mode.gif"
+            alt=""
+          />
         </button>
       </th>
     </tr>
