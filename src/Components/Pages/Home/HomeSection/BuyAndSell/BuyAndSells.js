@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FaUpload } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 import buy from '../../../../../Images/image/buy-removebg-preview.png';
 import sell from '../../../../../Images/image/images-removebg-preview.png';
 import BuyAndSell from './BuyAndSell';
@@ -7,11 +8,16 @@ import SellModal from './SellModal';
 
 const BuyAndSells = () => {
   const [products, setProducts] = useState([]);
+  const navigator = useNavigate();
   useEffect(() => {
-    fetch('products.json')
+    fetch('http://localhost:5000/buyAndSell/Buying And Selling')
       .then(res => res.json())
       .then(data => setProducts(data));
   }, [products]);
+
+  const handleBuy = id => {
+    navigator(`/buy/${id}`);
+  };
 
   return (
     <div className="mx-16 mb-20 bg-pink-100 rounded-lg mt-14">
@@ -61,7 +67,11 @@ const BuyAndSells = () => {
       <div className="grid grid-cols-5 mt-5 gap-7 bg-green-50 rounded-lg p-4">
         {' '}
         {products.map(product => (
-          <BuyAndSell />
+          <BuyAndSell
+            key={product._id}
+            product={product}
+            handleBuy={handleBuy}
+          ></BuyAndSell>
         ))}
       </div>
     </div>

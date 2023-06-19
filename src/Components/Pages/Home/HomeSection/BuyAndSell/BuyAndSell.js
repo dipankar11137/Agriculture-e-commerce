@@ -1,6 +1,6 @@
 import React from "react";
 
-const BuyAndSell = () => {
+const BuyAndSell = ({ product, handleBuy }) => {
   return (
     <div
       // data-aos="zoom-in-up"
@@ -15,18 +15,21 @@ const BuyAndSell = () => {
       <div>
         <img
           className="rounded-lg pic-style w-full h-64"
-          src="https://cdn.britannica.com/17/196817-050-6A15DAC3/vegetables.jpg"
+          src={product?.image}
           alt=""
         />
         <div className="p-3 mt-3  pb-10">
-          <h2 className="text-2xl font-bold">hello</h2>
-          <h2 className="text-xl font-semibold">Price : </h2>
-          <h2>Location : </h2>
-          <h1>Description :</h1>
+          <h2 className="text-2xl font-bold">{product?.name}</h2>
+          <h2 className="text-xl font-semibold">Price : {product?.price}</h2>
+          <h2>Location : {product?.location}</h2>
+          <h1>Description : {product?.description}</h1>
         </div>
       </div>
       <div className="overlay rounded-lg">
-        <button className="btn btn-primary text-white font-bold">
+        <button
+          onClick={() => handleBuy(product._id)}
+          className="btn btn-primary text-white font-bold"
+        >
           Buy Now
         </button>
       </div>
