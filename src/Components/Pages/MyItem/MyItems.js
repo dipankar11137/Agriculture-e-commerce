@@ -1,14 +1,12 @@
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
-import MyItem from "./MyItem";
+import React, { useEffect, useState } from 'react';
+import MyItem from './MyItem';
 
 const MyItems = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("products.json")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
+    fetch(`http://localhost:5000/buy`)
+      .then(res => res.json())
+      .then(data => setProducts(data));
   }, [products]);
   return (
     <div>
@@ -18,10 +16,15 @@ const MyItems = () => {
           <thead>
             <tr>
               <th></th>
-              <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
-              <th></th>
+              <th>Product Name</th>
+              <th>Quantity</th>
+              <th>Total Price</th>
+              <th>Customer Name</th>
+              <th>Location</th>
+              <th>Phone</th>
+              <th>Date</th>
+              <th>Payment</th>
+              <th>Remove</th>
             </tr>
           </thead>
           <tbody>
