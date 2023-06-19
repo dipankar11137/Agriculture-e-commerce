@@ -5,11 +5,38 @@ import ManageAddItem from './ManageAddItem';
 import ManageItem from './ManageItem';
 const ManageItems = () => {
   const [products, setProducts] = useState([]);
+  const [singleProduct, setSIngleProduct] = useState({});
   useEffect(() => {
     fetch('http://localhost:5000/buyAndSells')
       .then(res => res.json())
       .then(data => setProducts(data));
   }, [products]);
+  // handle edit
+  const handleEdit = id => {
+    fetch(`http://localhost:5000/buyAndSells/${id}`)
+      .then(res => res.json())
+      .then(data => setSIngleProduct(data));
+  };
+  const handleRestock = event => {
+    event.preventDefault();
+    const newQuantity =
+      parseInt(event.target.quantity.value) + parseInt(singleProduct?.quantity);
+    // console.log(newQuantity);
+    const updateQuantity = { quantity: newQuantity };
+    fetch(`http://localhost:5000/bloodId/${singleProduct?._id}`, {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(updateQuantity),
+    })
+      .then(res => res.json())
+      .then(data => {
+        toast.success('Restock Is Successfully');
+        event.target.reset();
+      });
+  };
+  // remove products
   const handleRemove = id => {
     const proceed = window.confirm('Are You Sure ?');
     if (proceed) {
@@ -59,6 +86,7 @@ const ManageItems = () => {
               <th>Email</th>
               <th>Location</th>
               <th>Description</th>
+              <th>Description</th>
               <th>Remove</th>
               {/* <th></th> */}
             </tr>
@@ -70,6 +98,8 @@ const ManageItems = () => {
                 product={product}
                 index={index + 1}
                 handleRemove={handleRemove}
+                handleEdit={handleEdit}
+                singleProduct={singleProduct}
               />
             ))}
           </tbody>
