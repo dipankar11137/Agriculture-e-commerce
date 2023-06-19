@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const BuyProducts = () => {
   const { id } = useParams();
@@ -22,21 +23,21 @@ const BuyProducts = () => {
     reset,
   } = useForm();
   const onSubmit = data => {
-    const changeUrl = { ...data, quantity, totalPrice };
-    console.log(changeUrl);
-    // const url = `http://localhost:5000/books`;
-    // fetch(url, {
-    //   method: "POST",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(changeUrl),
-    // })
-    //   .then((res) => res.json())
-    //   .then((result) => {
-    //     toast.success("Successfully Add This Products");
-    //     reset();
-    //   });
+    const changeUrl = { ...data, quantity, totalPrice, product };
+    // console.log(changeUrl);
+    const url = `http://localhost:5000/buy`;
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(changeUrl),
+    })
+      .then(res => res.json())
+      .then(result => {
+        toast.success('Successfully Buy This Products');
+        reset();
+      });
   };
   return (
     <div
