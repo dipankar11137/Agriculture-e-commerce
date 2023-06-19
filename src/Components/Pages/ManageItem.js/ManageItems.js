@@ -36,6 +36,35 @@ const ManageItems = () => {
         event.target.reset();
       });
   };
+  // handle decrease
+
+  const handleDecrease = event => {
+    event.preventDefault();
+    if (
+      parseInt(singleProduct?.quantity) >= parseInt(event.target.quantity.value)
+    ) {
+      const newQuantity =
+        parseInt(singleProduct?.quantity) -
+        parseInt(event.target.quantity.value);
+
+      const updateQuantity = { quantity: newQuantity };
+      fetch(`http://localhost:5000/buyAndSellsUpdate/${singleProduct?._id}`, {
+        method: 'PUT',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(updateQuantity),
+      })
+        .then(res => res.json())
+        .then(data => {
+          toast.success('Decrease Is Successfully');
+          event.target.reset();
+        });
+    } else {
+      toast.error('The new value is greater than the previous value');
+      event.target.reset();
+    }
+  };
   // remove products
   const handleRemove = id => {
     const proceed = window.confirm('Are You Sure ?');
@@ -104,6 +133,7 @@ const ManageItems = () => {
                 handleEdit={handleEdit}
                 singleProduct={singleProduct}
                 handleRestock={handleRestock}
+                handleDecrease={handleDecrease}
               />
             ))}
           </tbody>

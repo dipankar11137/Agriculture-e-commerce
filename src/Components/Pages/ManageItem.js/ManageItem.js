@@ -33,7 +33,8 @@ const ManageItem = ({
       {/* <td>{product?.location}</td> */}
       <td>{product?.description}</td>
       <td>
-        {product?.quantity} {product?.weight}
+        <span className="font-bold text-xl"> {product?.quantity}</span>{' '}
+        {product?.weight}
       </td>
       <td>{product?.price}</td>
       {/* handle edit start */}
@@ -75,6 +76,10 @@ const ManageItem = ({
                       className="input input-bordered input-error hover:border-lime-500"
                     />
 
+                    <span className="text-xl font-bold">
+                      {' '}
+                      {singleProduct?.weight}
+                    </span>
                     <input
                       type="submit"
                       className=" ml-3 btn mt-2 btn-primary pt-1 text-white  font-bold rounded-lg"
@@ -94,7 +99,7 @@ const ManageItem = ({
         <label
           onClick={() => handleEdit(product?._id)}
           for="my-modal-4"
-          className=" text-white  modal-button"
+          className=" text-white hover:cursor-pointer modal-button"
         >
           <AiFillMinusCircle className="  rounded-full text-5xl text-primary ml-10" />
         </label>
@@ -104,7 +109,7 @@ const ManageItem = ({
           <div className="modal-box relative">
             <label
               for="my-modal-4"
-              className="btn btn-primary pt-1 text-white  btn-sm btn-circle absolute right-2 top-2"
+              className="btn btn-primary  text-white  btn-sm btn-circle absolute right-2 top-2"
             >
               ✕
             </label>
@@ -122,7 +127,10 @@ const ManageItem = ({
                       placeholder="Enter a Number"
                       className="input input-bordered input-error hover:border-lime-500"
                     />
-
+                    <span className="text-xl font-bold">
+                      {' '}
+                      {singleProduct?.weight}
+                    </span>
                     <input
                       type="submit"
                       className=" ml-3 btn mt-2 btn-primary pt-1 text-white  font-bold rounded-lg"
