@@ -1,17 +1,27 @@
-import React from "react";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
+import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useParams } from 'react-router-dom';
 
 const BuyProducts = () => {
-  const [quantity, setQuantity] = useState("");
-  const totalPrice = quantity * 30;
+  const { id } = useParams();
+  const [quantity, setQuantity] = useState('');
+  const [product, setProduct] = useState([]);
+
+  const totalPrice = quantity * product?.price;
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/buyAndSells/${id}`)
+      .then(res => res.json())
+      .then(data => setProduct(data));
+  }, [id]);
+
   const {
     register,
     formState: { errors },
     handleSubmit,
     reset,
   } = useForm();
-  const onSubmit = (data) => {
+  const onSubmit = data => {
     const changeUrl = { ...data, quantity, totalPrice };
     console.log(changeUrl);
     // const url = `http://localhost:5000/books`;
@@ -40,16 +50,17 @@ const BuyProducts = () => {
       <div
         style={{
           backgroundImage: `url("https://picjumbo.com/wp-content/uploads/fruits-and-vegetables-still-life-and-black-background.jpg")`,
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          width: "100%",
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+          width: '100%',
+          height: '821px',
         }}
-        className="h-screen backdrop-blur"
+        className=" backdrop-blur"
       >
-        <div className="flex justify-end gap-x-20" style={{ zIndex: "2" }}>
+        <div className="flex justify-end gap-x-20" style={{ zIndex: '2' }}>
           <div
-            style={{ boxShadow: "1px 2px 9px #F4AAB9" }}
+            style={{ boxShadow: '1px 2px 9px #F4AAB9' }}
             className=" mt-3 p-5 rounded-2xl w-4/12  bg-black "
           >
             <h2 className="py-5 mr-32 font-bold text-4xl text-center text-white uppercase">
@@ -58,7 +69,7 @@ const BuyProducts = () => {
             <form className="" onSubmit={handleSubmit(onSubmit)}>
               {/* name */}
               <input
-                value={`Mango`}
+                value={product?.name}
                 type="text"
                 className="input input-bordered bg-white w-full mb-4 font-bold   hover:shadow-xl shadow-inner text-center text-2xl"
               />
@@ -70,7 +81,7 @@ const BuyProducts = () => {
                 </span>
               </label>
               <input
-                onChange={(e) => setQuantity(e.target.value)}
+                onChange={e => setQuantity(e.target.value)}
                 type="number"
                 placeholder="Quantity"
                 className="input input-bordered bg-white w-full    hover:shadow-xl shadow-inner"
@@ -83,15 +94,15 @@ const BuyProducts = () => {
                 type="date"
                 placeholder="Images URL"
                 className="input input-bordered bg-white w-full   hover:shadow-xl shadow-inner"
-                {...register("date", {
+                {...register('date', {
                   required: {
                     value: true,
-                    message: "Date is Required",
+                    message: 'Date is Required',
                   },
                 })}
               />
               <label className="label">
-                {errors.date?.type === "required" && (
+                {errors.date?.type === 'required' && (
                   <span className="label-text-alt text-red-50">
                     {errors?.date?.message}
                   </span>
@@ -105,15 +116,15 @@ const BuyProducts = () => {
                 type="phone"
                 placeholder="Phone Number"
                 className="input input-bordered bg-white w-full   hover:shadow-xl shadow-inner"
-                {...register("phone", {
+                {...register('phone', {
                   required: {
                     value: true,
-                    message: "Phone is Required",
+                    message: 'Phone is Required',
                   },
                 })}
               />
               <label className="label">
-                {errors.phone?.type === "required" && (
+                {errors.phone?.type === 'required' && (
                   <span className="label-text-alt text-red-50">
                     {errors?.phone?.message}
                   </span>
@@ -130,15 +141,15 @@ const BuyProducts = () => {
                 type="text"
                 placeholder="Address"
                 className="input input-bordered bg-white w-full   h-20 pt-1 hover:shadow-xl shadow-inner"
-                {...register("address", {
+                {...register('address', {
                   required: {
                     value: true,
-                    message: "Address is Required",
+                    message: 'Address is Required',
                   },
                 })}
               />
               <label className="label">
-                {errors.address?.type === "required" && (
+                {errors.address?.type === 'required' && (
                   <span className="label-text-alt text-red-50">
                     {errors?.address?.message}
                   </span>
@@ -163,14 +174,17 @@ const BuyProducts = () => {
             </form>
           </div>
           <div
-            style={{ boxShadow: "1px 2px 9px #F4AAB9" }}
+            style={{ boxShadow: '1px 2px 9px #F4AAB9' }}
             className="bg-black h-[350px] w-[500px] mr-20  mt-20 text-white p-4 rounded-xl"
           >
             <h1 className="text-3xl font-bold text-center my-5 underline">
               Mango
             </h1>
             <h1 className="text-3xl font-bold mt-10"> Quantity : {quantity}</h1>
-            <h1 className="text-3xl font-bold mt-10"> Price : 30</h1>
+            <h1 className="text-3xl font-bold mt-10">
+              {' '}
+              Price : {product?.price}
+            </h1>
             <hr className="mt-5" />
             <h1 className="text-3xl font-bold mt-3">
               Total Price : {totalPrice}
