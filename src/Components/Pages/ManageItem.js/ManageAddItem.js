@@ -8,7 +8,7 @@ const ManageAddItem = () => {
   const [users] = useAuthState(auth);
   const email = users?.email;
   const userName = users?.displayName;
-  const [category, setCategory] = useState('');
+  const [category, setCategory] = useState('Agricultural Medicine');
     const [weight, setWeight] = useState('');
 
     const {
