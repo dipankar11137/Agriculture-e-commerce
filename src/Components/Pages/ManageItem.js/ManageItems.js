@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaHandPointRight, FaUpload } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 import ManageAddItem from './ManageAddItem';
 import ManageItem from './ManageItem';
 const ManageItems = () => {
@@ -10,7 +11,19 @@ const ManageItems = () => {
       .then(data => setProducts(data));
   }, [products]);
   const handleRemove = id => {
-    console.log(id);
+    const proceed = window.confirm('Are You Sure ?');
+    if (proceed) {
+      const url = `http://localhost:5000/buyAndSells/${id}`;
+      fetch(url, {
+        method: 'DELETE',
+      })
+        .then(res => res.json())
+        .then(data => {
+          const remaining = products.filter(product => product._id !== id);
+          setProducts(remaining);
+          toast.success('Successfully Remove');
+        });
+    }
   };
   return (
     <div className="mx-14">
