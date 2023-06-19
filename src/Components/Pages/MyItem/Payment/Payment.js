@@ -27,23 +27,23 @@ const Payment = () => {
     setVCode(true);
   };
   const handleVCode = () => {
-    // const updatePayment = { payment: true };
-    // fetch(`http://localhost:5000/buyBloodPayment/${id}`, {
-    //   method: 'PUT',
-    //   headers: {
-    //     'content-type': 'application/json',
-    //   },
-    //   body: JSON.stringify(updatePayment),
-    // })
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     toast.success('Payment Successfully');
-    //     navigation('/dashboard/myBooking');
-    //   });
+    const updatePayment = { payment: true };
+    fetch(`http://localhost:5000/buyPayment/${id}`, {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(updatePayment),
+    })
+      .then(res => res.json())
+      .then(data => {
+        toast.success('Payment Successfully');
+        navigation('/myItem');
+      });
   };
   const handleCancel = () => {
     toast.error('Payment Cancel');
-    navigation('/dashboard/myBooking');
+    navigation('/myItem');
   };
   return (
     <div className="flex justify-center mt-5 pb-20">

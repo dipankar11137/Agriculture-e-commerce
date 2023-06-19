@@ -27,20 +27,34 @@ const MyItem = ({ product, index, handleRemove, handlePayment }) => {
       <td>{product?.phone}</td>
       <td>{product?.date}</td>
       <td>
-        <button
-          onClick={() => handlePayment(product?._id)}
-          className="btn btn-secondary text-white btn-xs"
-        >
-          Payment
-        </button>
+        {product?.payment ? (
+          <h1 className="text-xl font-bold text-blue-800">Paid</h1>
+        ) : (
+          <button
+            onClick={() => handlePayment(product?._id)}
+            className="btn btn-secondary text-white btn-xs"
+          >
+            Payment
+          </button>
+        )}
       </td>
       <th>
-        <button
-          onClick={() => handleRemove(product?._id)}
-          className="btn btn-primary text-white btn-xs"
-        >
-          Remove
-        </button>
+        {product?.payment ? (
+          <button
+            disabled
+            onClick={() => handleRemove(product?._id)}
+            className="btn btn-primary text-white btn-xs"
+          >
+            Remove
+          </button>
+        ) : (
+          <button
+            onClick={() => handleRemove(product?._id)}
+            className="btn btn-primary text-white btn-xs"
+          >
+            Remove
+          </button>
+        )}
       </th>
     </tr>
   );
