@@ -1,7 +1,7 @@
 import React from "react";
 
 const MyItem = ({ product, index, handleRemove, handlePayment }) => {
-  console.log(product);
+
   return (
     <tr>
       <th>{index}</th>

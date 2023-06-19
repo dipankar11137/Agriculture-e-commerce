@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import auth from '../../../firebase.init';
 import MyItem from './MyItem';
 
 const MyItems = () => {
+  const [users] = useAuthState(auth);
+  const email = users?.email;
+
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch(`http://localhost:5000/buy`)
+    fetch(`http://localhost:5000/buys/${email}`)
       .then(res => res.json())
       .then(data => setProducts(data));
-  }, [products]);
+  }, [products, email]);
 
   const handleRemove = id => {
     const proceed = window.confirm('Are You Sure ?');
