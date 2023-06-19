@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import MyItem from './MyItem';
 
 const MyItems = () => {
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     fetch(`http://localhost:5000/buy`)
       .then(res => res.json())
@@ -24,6 +26,9 @@ const MyItems = () => {
           toast.success('Successfully Remove');
         });
     }
+  };
+  const handlePayment = id => {
+    navigate(`/payment/${id}`);
   };
   return (
     <div>
@@ -51,6 +56,7 @@ const MyItems = () => {
                 product={product}
                 index={index + 1}
                 handleRemove={handleRemove}
+                handlePayment={handlePayment}
               />
             ))}
           </tbody>

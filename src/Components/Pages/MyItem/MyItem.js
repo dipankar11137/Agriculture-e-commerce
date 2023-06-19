@@ -1,6 +1,6 @@
 import React from "react";
 
-const MyItem = ({ product, index, handleRemove }) => {
+const MyItem = ({ product, index, handleRemove, handlePayment }) => {
   console.log(product);
   return (
     <tr>
@@ -27,7 +27,12 @@ const MyItem = ({ product, index, handleRemove }) => {
       <td>{product?.phone}</td>
       <td>{product?.date}</td>
       <td>
-        <button className="btn btn-secondary text-white btn-xs">Payment</button>
+        <button
+          onClick={() => handlePayment(product?._id)}
+          className="btn btn-secondary text-white btn-xs"
+        >
+          Payment
+        </button>
       </td>
       <th>
         <button
