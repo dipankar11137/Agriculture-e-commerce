@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BiPhoneOutgoing } from 'react-icons/bi';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const Payment = () => {
   const { id } = useParams('');
-  const [buyBlood, setBuyBlood] = useState({});
-  // useEffect(() => {
-  //   fetch(`http://localhost:5000/buyBloodBuyId/${id}`)
-  //     .then(res => res.json())
-  //     .then(data => setBuyBlood(data));
-  // }, [buyBlood, id]);
+  const [buyProduct, setBuyProduct] = useState({});
+  useEffect(() => {
+    fetch(`http://localhost:5000/buy/${id}`)
+      .then(res => res.json())
+      .then(data => setBuyProduct(data));
+  }, [buyProduct, id]);
   const [numberButton, setNumberButton] = useState(true);
   const [password, setPassword] = useState(false);
   const [passwordButton, setPasswordButton] = useState(false);
@@ -56,8 +56,8 @@ const Payment = () => {
           />
           <div className="mx-[50px] w-[400] h-[150px] shadow-black shadow-md mt-5 text-white text-xl pt-8 pl-4">
             <h1>Merchant : BLOODBANK.COM</h1>
-            <h1>Invoice No : {buyBlood?._id}</h1>
-            <h1>Amount : {buyBlood?.totalPrice}</h1>
+            <h1>Invoice No : {buyProduct?._id}</h1>
+            <h1>Amount : {buyProduct?.totalPrice}</h1>
           </div>
           <div className="text-center text-white mt-10 text-xl">
             <div>
