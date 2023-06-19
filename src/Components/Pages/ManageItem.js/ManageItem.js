@@ -30,12 +30,16 @@ const ManageItem = ({
       <td>{product?.email}</td>
       <td>{product?.location}</td>
       <td>{product?.description}</td>
+      <td>
+        {product?.quantity} {product?.weight}
+      </td>
+      <td>{product?.price}</td>
       {/* handle edit start */}
       <td>
         <label
           onClick={() => handleEdit(product?._id)}
           for="my-modal-3"
-          className="btn bg-secondary text-white  modal-button"
+          className="btn bg-primary text-white  modal-button"
         >
           <FaEdit className="text-2xl" />
         </label>

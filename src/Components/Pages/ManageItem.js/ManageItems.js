@@ -21,20 +21,20 @@ const ManageItems = () => {
     event.preventDefault();
     const newQuantity =
       parseInt(event.target.quantity.value) + parseInt(singleProduct?.quantity);
-    // console.log(newQuantity);
-    const updateQuantity = { quantity: newQuantity };
-    fetch(`http://localhost:5000/bloodId/${singleProduct?._id}`, {
-      method: 'PUT',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify(updateQuantity),
-    })
-      .then(res => res.json())
-      .then(data => {
-        toast.success('Restock Is Successfully');
-        event.target.reset();
-      });
+    console.log(newQuantity);
+    // const updateQuantity = { quantity: newQuantity };
+    // fetch(`http://localhost:5000/bloodId/${singleProduct?._id}`, {
+    //   method: 'PUT',
+    //   headers: {
+    //     'content-type': 'application/json',
+    //   },
+    //   body: JSON.stringify(updateQuantity),
+    // })
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     toast.success('Restock Is Successfully');
+    //     event.target.reset();
+    //   });
   };
   // remove products
   const handleRemove = id => {
@@ -86,7 +86,9 @@ const ManageItems = () => {
               <th>Email</th>
               <th>Location</th>
               <th>Description</th>
-              <th>Description</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th>Update</th>
               <th>Remove</th>
               {/* <th></th> */}
             </tr>
@@ -100,6 +102,7 @@ const ManageItems = () => {
                 handleRemove={handleRemove}
                 handleEdit={handleEdit}
                 singleProduct={singleProduct}
+                handleRestock={handleRestock}
               />
             ))}
           </tbody>

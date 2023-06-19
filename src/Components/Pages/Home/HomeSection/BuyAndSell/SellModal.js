@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
@@ -8,6 +8,7 @@ const SellModal = () => {
   const [users] = useAuthState(auth);
   const email = users?.email;
   const userName = users?.displayName;
+  const [weight, setWeight] = useState('');
 
   const category = 'Buying And Selling';
 
@@ -27,6 +28,7 @@ const SellModal = () => {
       email,
       category,
       userName,
+      weight,
     };
 
     fetch(`http://localhost:5000/buyAndSells`, {
@@ -170,6 +172,45 @@ const SellModal = () => {
                   )}
                 </label>
 
+                {/* Quantity */}
+                <label className="label">
+                  <span className="label-text   text-xl font-semibold">
+                    Quantity
+                  </span>
+                </label>
+                <input
+                  type="number"
+                  placeholder="Quantity"
+                  className="input input-bordered bg-white w-full    hover:shadow-xl shadow-inner"
+                  {...register('quantity', {
+                    required: {
+                      value: true,
+                      message: 'Quantity is Required',
+                    },
+                  })}
+                />
+                <label className="label">
+                  {errors.quantity?.type === 'required' && (
+                    <span className="label-text-alt text-red-500">
+                      {errors?.quantity?.message}
+                    </span>
+                  )}
+                </label>
+
+                {/* Category */}
+                <label className="label">
+                  <span className="label-text   text-xl font-semibold">
+                    Weight or Piece
+                  </span>
+                </label>
+
+                <select
+                  onClick={e => setWeight(e.target.value)}
+                  className="select select-bordered lg:w-96 sm:w-full   hover:shadow-xl shadow-inner text-xl"
+                >
+                  <option>Kg</option>
+                  <option>Piece</option>
+                </select>
                 {/* Price */}
                 <label className="label">
                   <span className="label-text   text-xl font-semibold">
