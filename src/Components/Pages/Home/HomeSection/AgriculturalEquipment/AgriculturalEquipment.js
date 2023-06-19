@@ -1,6 +1,6 @@
 import React from "react";
 
-const AgriculturalEquipment = () => {
+const AgriculturalEquipment = ({ product, handleBuy }) => {
   return (
     <div
       data-aos="zoom-in-down"
@@ -16,19 +16,24 @@ const AgriculturalEquipment = () => {
       <div>
         <img
           className="rounded-lg pic-style w-full"
-          src="https://acimotors-bd.com/assets/images/product/power-tiller/regular-16-v-2.0.jpg"
+          src={product?.image}
           alt=""
         />
         <div className="p-3 mt-3  pb-10">
-          <h2 className="text-2xl font-bold">hello</h2>
-          <h2 className="text-xl font-semibold">Price</h2>
+          <h2 className="text-2xl font-bold">{product?.name}</h2>
+          <h2 className="text-xl font-semibold">Price : {product?.price}</h2>
 
-          <h2 className="text-xl font-semibold">Made in </h2>
-          <h1>Description</h1>
+          <h2 className="text-xl font-semibold">Made in {product?.location}</h2>
+          <h1>{product?.description}</h1>
         </div>
       </div>
       <div className="overlay rounded-lg">
-        <button className="btn btn-primary">Buy Now</button>
+        <button
+          onClick={() => handleBuy(product._id)}
+          className="btn btn-primary"
+        >
+          Buy Now
+        </button>
       </div>
     </div>
   );
