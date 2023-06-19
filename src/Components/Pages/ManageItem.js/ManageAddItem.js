@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
+import auth from '../../../firebase.init';
 
 const ManageAddItem = () => {
+  const [users] = useAuthState(auth);
+  const email = users?.email;
+  const userName = users?.displayName;
   const [category, setCategory] = useState('');
 
   const {
@@ -14,40 +20,42 @@ const ManageAddItem = () => {
   const imageHostKey = '9a79ac160a3fcabfcd224dc71e011834';
 
   const submitProduct = (data, image) => {
-    // const updateProduct = {
-    //   ...data,
-    //   image,
-    //   category,
-    // };
-    // fetch(``, {
-    //   method: "PUT",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(updateProduct),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     toast.success("Successfully Add This Product");
-    //     reset();
-    //   });
-    // console.log(updateProduct);
+    const updateProduct = {
+      ...data,
+      image,
+      email,
+      category,
+      userName,
+    };
+
+    fetch(`http://localhost:5000/buyAndSells`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(updateProduct),
+    })
+      .then(res => res.json())
+      .then(data => {
+        toast.success('Successfully Add This Product');
+        reset();
+      });
   };
 
   const onSubmit = data => {
-    // const image = data.image[0];
-    // const formData = new FormData();
-    // formData.append("image", image);
-    // const url = `https://api.imgbb.com/1/upload?expiration=600&key=${imageHostKey}`;
-    // fetch(url, {
-    //   method: "POST",
-    //   body: formData,
-    // })
-    //   .then((res) => res.json())
-    //   .then((imageData) => {
-    //     const image = imageData.data.url;
-    //     submitProduct(data, image);
-    //   });
+    const image = data.image[0];
+    const formData = new FormData();
+    formData.append('image', image);
+    const url = `https://api.imgbb.com/1/upload?expiration=600&key=${imageHostKey}`;
+    fetch(url, {
+      method: 'POST',
+      body: formData,
+    })
+      .then(res => res.json())
+      .then(imageData => {
+        const image = imageData.data.url;
+        submitProduct(data, image);
+      });
   };
   return (
     <div className="">
@@ -91,18 +99,16 @@ const ManageAddItem = () => {
                 {/* Category */}
                 <label className="label">
                   <span className="label-text  text-xl font-semibold">
-                    Product Category {category}
+                    Product Category
                   </span>
                 </label>
                 <select
                   onClick={e => setCategory(e.target.value)}
-                  className="select select-bordered lg:w-96 sm:w-full   hover:shadow-xl shadow-inner"
+                  className="select select-bordered lg:w-96 sm:w-full   hover:shadow-xl shadow-inner text-xl"
                 >
-                  <option disabled selected>
-                    Pick Product Category
-                  </option>
-                  <option>Java</option>
-                  <option>Java 2</option>
+                  <option>Agricultural Medicine</option>
+                  <option>Agricultural Equipment</option>
+                  <option>Buying And Selling</option>
                 </select>
 
                 {/* Image */}
