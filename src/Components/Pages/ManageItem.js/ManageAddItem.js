@@ -1,9 +1,8 @@
-import React from "react";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 const ManageAddItem = () => {
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState('');
 
   const {
     register,
@@ -12,7 +11,7 @@ const ManageAddItem = () => {
     reset,
   } = useForm();
 
-  const imageHostKey = "9a79ac160a3fcabfcd224dc71e011834";
+  const imageHostKey = '9a79ac160a3fcabfcd224dc71e011834';
 
   const submitProduct = (data, image) => {
     // const updateProduct = {
@@ -35,7 +34,7 @@ const ManageAddItem = () => {
     // console.log(updateProduct);
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = data => {
     // const image = data.image[0];
     // const formData = new FormData();
     // formData.append("image", image);
@@ -68,27 +67,43 @@ const ManageAddItem = () => {
                 {/* name */}
                 <label className="label">
                   <span className="label-text  text-xl font-semibold">
-                    Book Name
+                    Product Name
                   </span>
                 </label>
                 <input
                   type="text"
                   placeholder="Book Name"
                   className="input input-bordered lg:w-96 sm:w-full   hover:shadow-xl shadow-inner"
-                  {...register("name", {
+                  {...register('name', {
                     required: {
                       value: true,
-                      message: "Book Name is Required",
+                      message: 'Book Name is Required',
                     },
                   })}
                 />
                 <label className="label">
-                  {errors.name?.type === "required" && (
+                  {errors.name?.type === 'required' && (
                     <span className="label-text-alt text-red-500">
                       {errors?.name?.message}
                     </span>
                   )}
                 </label>
+                {/* Category */}
+                <label className="label">
+                  <span className="label-text  text-xl font-semibold">
+                    Product Category {category}
+                  </span>
+                </label>
+                <select
+                  onClick={e => setCategory(e.target.value)}
+                  className="select select-bordered lg:w-96 sm:w-full   hover:shadow-xl shadow-inner"
+                >
+                  <option disabled selected>
+                    Pick Product Category
+                  </option>
+                  <option>Java</option>
+                  <option>Java 2</option>
+                </select>
 
                 {/* Image */}
                 <label className="label  text-xl font-semibold">
@@ -98,15 +113,15 @@ const ManageAddItem = () => {
                   type="file"
                   placeholder="Images URL"
                   className="input input-bordered bg-white w-full pt-2  hover:shadow-xl shadow-inner"
-                  {...register("image", {
+                  {...register('image', {
                     required: {
                       value: true,
-                      message: "Images is Required",
+                      message: 'Images is Required',
                     },
                   })}
                 />
                 <label className="label">
-                  {errors.img?.type === "required" && (
+                  {errors.img?.type === 'required' && (
                     <span className="label-text-alt text-red-500">
                       {errors?.img?.message}
                     </span>
@@ -123,15 +138,15 @@ const ManageAddItem = () => {
                   type="text"
                   placeholder="Services Location"
                   className="input input-bordered bg-white w-full    hover:shadow-xl shadow-inner"
-                  {...register("location", {
+                  {...register('location', {
                     required: {
                       value: true,
-                      message: "Location is Required",
+                      message: 'Location is Required',
                     },
                   })}
                 />
                 <label className="label">
-                  {errors.location?.type === "required" && (
+                  {errors.location?.type === 'required' && (
                     <span className="label-text-alt text-red-500">
                       {errors?.location?.message}
                     </span>
@@ -147,15 +162,15 @@ const ManageAddItem = () => {
                   type="text"
                   placeholder="Description"
                   className="input input-bordered bg-white w-full   h-20 pt-1 hover:shadow-xl shadow-inner"
-                  {...register("description", {
+                  {...register('description', {
                     required: {
                       value: true,
-                      message: "Description is Required",
+                      message: 'Description is Required',
                     },
                   })}
                 />
                 <label className="label">
-                  {errors.description?.type === "required" && (
+                  {errors.description?.type === 'required' && (
                     <span className="label-text-alt text-red-500">
                       {errors?.description?.message}
                     </span>
@@ -172,15 +187,15 @@ const ManageAddItem = () => {
                   type="number"
                   placeholder="Price"
                   className="input input-bordered bg-white w-full    hover:shadow-xl shadow-inner"
-                  {...register("price", {
+                  {...register('price', {
                     required: {
                       value: true,
-                      message: "Price is Required",
+                      message: 'Price is Required',
                     },
                   })}
                 />
                 <label className="label">
-                  {errors.price?.type === "required" && (
+                  {errors.price?.type === 'required' && (
                     <span className="label-text-alt text-red-500">
                       {errors?.price?.message}
                     </span>

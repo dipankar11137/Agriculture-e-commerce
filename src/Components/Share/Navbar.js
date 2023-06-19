@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useAuthState } from "react-firebase-hooks/auth";
-import auth from "../../firebase.init";
-import { signOut } from "firebase/auth";
-import { MdOutlineBikeScooter } from "react-icons/md";
+import { signOut } from 'firebase/auth';
+import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { MdOutlineBikeScooter } from 'react-icons/md';
+import { Link } from 'react-router-dom';
+import auth from '../../firebase.init';
 
 const Navbar = () => {
   const [user] = useAuthState(auth);
@@ -11,16 +11,16 @@ const Navbar = () => {
     signOut(auth);
   };
 
-  const [selectedButton, setSelectedButton] = useState("");
+  const [selectedButton, setSelectedButton] = useState('');
 
   const menuItem = (
     <>
       <li
-        onClick={() => setSelectedButton("Button 1")}
+        onClick={() => setSelectedButton('Button 1')}
         className={
-          selectedButton === "Button 1"
-            ? "bg-primary text-white rounded-lg"
-            : ""
+          selectedButton === 'Button 1'
+            ? 'bg-primary text-white rounded-lg'
+            : ''
         }
       >
         <Link to="/" className="font-bold  text-xl ">
@@ -28,11 +28,11 @@ const Navbar = () => {
         </Link>
       </li>
       <li
-        onClick={() => setSelectedButton("Button 2")}
+        onClick={() => setSelectedButton('Button 2')}
         className={
-          selectedButton === "Button 2"
-            ? "bg-primary text-white rounded-lg"
-            : ""
+          selectedButton === 'Button 2'
+            ? 'bg-primary text-white rounded-lg'
+            : ''
         }
       >
         <Link to="/blog" className="font-bold  text-xl ">
@@ -43,11 +43,11 @@ const Navbar = () => {
       {user && (
         <>
           <li
-            onClick={() => setSelectedButton("Button 4")}
+            onClick={() => setSelectedButton('Button 4')}
             className={
-              selectedButton === "Button 4"
-                ? "bg-primary text-white rounded-lg"
-                : ""
+              selectedButton === 'Button 4'
+                ? 'bg-primary text-white rounded-lg'
+                : ''
             }
           >
             <Link to="/manageItem" className="font-bold  text-xl ">
@@ -55,11 +55,11 @@ const Navbar = () => {
             </Link>
           </li>
           <li
-            onClick={() => setSelectedButton("Button 5")}
+            onClick={() => setSelectedButton('Button 5')}
             className={
-              selectedButton === "Button 5"
-                ? "bg-primary text-white rounded-lg"
-                : ""
+              selectedButton === 'Button 5'
+                ? 'bg-primary text-white rounded-lg'
+                : ''
             }
           >
             <Link to="/myItem" className="font-bold  text-xl ">
@@ -113,17 +113,17 @@ const Navbar = () => {
               {menuItem}
             </ul>
           </div>
-          <Link to={"/"}>
+          <Link to={'/'}>
             <div
-              onClick={() => setSelectedButton("Button 1")}
+              onClick={() => setSelectedButton('Button 1')}
               className="btn btn-ghost text-white font-extrabold text-3xl uppercase"
             >
-              {" "}
+              {' '}
               <MdOutlineBikeScooter
                 className="mr-4 text-yellow-400 animate-bounce"
                 size={45}
-              />{" "}
-              Agriculture E-commerce{" "}
+              />{' '}
+              Agriculture E-commerce{' '}
             </div>
           </Link>
         </div>

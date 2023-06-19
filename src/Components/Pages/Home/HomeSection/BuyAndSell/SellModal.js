@@ -8,7 +8,7 @@ const SellModal = () => {
   const [users] = useAuthState(auth);
   const email = users?.email;
   const userName = users?.displayName;
-  console.log(users);
+
   const category = 'Buying And Selling';
 
   const {
@@ -59,7 +59,7 @@ const SellModal = () => {
       });
   };
   return (
-    <div className="">
+    <div>
       <input type="checkbox" id="sellingModal" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box relative">
