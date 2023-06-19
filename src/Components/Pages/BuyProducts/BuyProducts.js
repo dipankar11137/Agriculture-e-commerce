@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import auth from '../../../firebase.init';
 
 const BuyProducts = () => {
   const { id } = useParams();
+  const [users] = useAuthState(auth);
+  const email = users?.email;
+  const userName = users?.displayName;
   const [quantity, setQuantity] = useState('');
   const [product, setProduct] = useState([]);
 
@@ -23,7 +28,14 @@ const BuyProducts = () => {
     reset,
   } = useForm();
   const onSubmit = data => {
-    const changeUrl = { ...data, quantity, totalPrice, product };
+    const changeUrl = {
+      ...data,
+      quantity,
+      totalPrice,
+      product,
+      email,
+      userName,
+    };
     // console.log(changeUrl);
     const url = `http://localhost:5000/buy`;
     fetch(url, {
