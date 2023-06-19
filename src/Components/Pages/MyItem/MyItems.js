@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import MyItem from './MyItem';
 
 const MyItems = () => {
@@ -8,6 +9,22 @@ const MyItems = () => {
       .then(res => res.json())
       .then(data => setProducts(data));
   }, [products]);
+
+  const handleRemove = id => {
+    const proceed = window.confirm('Are You Sure ?');
+    if (proceed) {
+      const url = `http://localhost:5000/buy/${id}`;
+      fetch(url, {
+        method: 'DELETE',
+      })
+        .then(res => res.json())
+        .then(data => {
+          const remaining = products.filter(product => product._id !== id);
+          setProducts(remaining);
+          toast.success('Successfully Remove');
+        });
+    }
+  };
   return (
     <div>
       <div className="overflow-x-auto w-full">
@@ -20,7 +37,7 @@ const MyItems = () => {
               <th>Quantity</th>
               <th>Total Price</th>
               <th>Customer Name</th>
-              <th>Location</th>
+              <th>Address</th>
               <th>Phone</th>
               <th>Date</th>
               <th>Payment</th>
@@ -29,7 +46,12 @@ const MyItems = () => {
           </thead>
           <tbody>
             {products.map((product, index) => (
-              <MyItem key={product._id} product={product} index={index + 1} />
+              <MyItem
+                key={product._id}
+                product={product}
+                index={index + 1}
+                handleRemove={handleRemove}
+              />
             ))}
           </tbody>
         </table>

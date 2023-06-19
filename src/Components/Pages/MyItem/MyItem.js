@@ -1,6 +1,6 @@
 import React from "react";
 
-const MyItem = ({ product, index }) => {
+const MyItem = ({ product, index, handleRemove }) => {
   console.log(product);
   return (
     <tr>
@@ -20,16 +20,22 @@ const MyItem = ({ product, index }) => {
           </div>
         </div>
       </td>
+      <td>{product?.quantity}</td>
+      <td>{product?.totalPrice}</td>
+      <td>{product?.userName}</td>
+      <td>{product?.address}</td>
+      <td>{product?.phone}</td>
+      <td>{product?.date}</td>
       <td>
-        Zemlak, Daniel and Leannon
-        <br />
-        <span className="badge badge-ghost badge-sm">
-          Desktop Support Technician
-        </span>
+        <button className="btn btn-secondary text-white btn-xs">Payment</button>
       </td>
-      <td>Purple</td>
       <th>
-        <button className="btn btn-ghost btn-xs">details</button>
+        <button
+          onClick={() => handleRemove(product?._id)}
+          className="btn btn-primary text-white btn-xs"
+        >
+          Remove
+        </button>
       </th>
     </tr>
   );
