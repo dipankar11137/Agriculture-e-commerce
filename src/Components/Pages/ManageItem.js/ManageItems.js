@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
-import ManageItem from "./ManageItem";
-import { FaUpload } from "react-icons/fa";
-import { FaHandPointRight } from "react-icons/fa";
-import ManageAddItem from "./ManageAddItem";
+import { FaHandPointRight, FaUpload } from 'react-icons/fa';
+import ManageAddItem from './ManageAddItem';
+import ManageItem from './ManageItem';
 const ManageItems = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("products.json")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
+    fetch('http://localhost:5000/buyAndSells')
+      .then(res => res.json())
+      .then(data => setProducts(data));
   }, [products]);
+  const handleRemove = id => {
+    console.log(id);
+  };
   return (
-    <div>
+    <div className="mx-14">
       {/* modal start */}
       <div className="flex justify-center my-3">
         <h1
@@ -25,7 +27,7 @@ const ManageItems = () => {
           htmlFor="sellingModal"
           className="btn btn-primary text-xl text-white ml-20 font-bold "
         >
-          Click Here{" "}
+          Click Here{' '}
           <FaUpload className="text-white ml-5 text-3xl animate-bounce " />
         </label>
         <ManageAddItem />
@@ -39,9 +41,13 @@ const ManageItems = () => {
             <tr>
               <th></th>
               <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
-              <th></th>
+              <th>Category</th>
+              <th>Owner Name</th>
+              <th>Email</th>
+              <th>Location</th>
+              <th>Description</th>
+              <th>Remove</th>
+              {/* <th></th> */}
             </tr>
           </thead>
           <tbody>
@@ -50,6 +56,7 @@ const ManageItems = () => {
                 key={product._id}
                 product={product}
                 index={index + 1}
+                handleRemove={handleRemove}
               />
             ))}
           </tbody>
