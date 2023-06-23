@@ -36,7 +36,7 @@ const MyItems = () => {
     navigate(`/payment/${id}`);
   };
   return (
-    <div>
+    <div className="mx-20 shadow-xl">
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
           {/* head */}

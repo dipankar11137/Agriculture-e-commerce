@@ -42,18 +42,35 @@ const Navbar = () => {
 
       {user && (
         <>
-          <li
-            onClick={() => setSelectedButton('Button 4')}
-            className={
-              selectedButton === 'Button 4'
-                ? 'bg-primary text-white rounded-lg'
-                : ''
-            }
-          >
-            <Link to="/manageItem" className="font-bold  text-xl ">
-              Manage Item
-            </Link>
-          </li>
+          {user.email === 'abc@def.com' && (
+            <>
+              {' '}
+              <li
+                onClick={() => setSelectedButton('Button 4')}
+                className={
+                  selectedButton === 'Button 4'
+                    ? 'bg-primary text-white rounded-lg'
+                    : ''
+                }
+              >
+                <Link to="/manageItem" className="font-bold  text-xl ">
+                  Manage Item
+                </Link>
+              </li>
+              <li
+                onClick={() => setSelectedButton('Button 8')}
+                className={
+                  selectedButton === 'Button 8'
+                    ? 'bg-primary text-white rounded-lg'
+                    : ''
+                }
+              >
+                <Link to="/manageBooking" className="font-bold  text-xl ">
+                  Manage Booking
+                </Link>
+              </li>
+            </>
+          )}
           <li
             onClick={() => setSelectedButton('Button 5')}
             className={
@@ -63,7 +80,7 @@ const Navbar = () => {
             }
           >
             <Link to="/myItem" className="font-bold  text-xl ">
-              My Item
+              My Booking
             </Link>
           </li>
         </>
