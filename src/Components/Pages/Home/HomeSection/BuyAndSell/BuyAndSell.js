@@ -1,6 +1,9 @@
 import React from "react";
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../../../firebase.init';
 
 const BuyAndSell = ({ product, handleBuy }) => {
+  const [user] = useAuthState(auth);
   return (
     <div
       // data-aos="zoom-in-up"
@@ -26,12 +29,22 @@ const BuyAndSell = ({ product, handleBuy }) => {
         </div>
       </div>
       <div className="overlay rounded-lg">
-        <button
-          onClick={() => handleBuy(product._id)}
-          className="btn btn-primary text-white font-bold"
-        >
-          Buy Now
-        </button>
+        {user.email === 'abc@def.com' ? (
+          <button
+            disabled
+            onClick={() => handleBuy(product._id)}
+            className="btn btn-primary text-white font-bold"
+          >
+            Buy Now
+          </button>
+        ) : (
+          <button
+            onClick={() => handleBuy(product._id)}
+            className="btn btn-primary text-white font-bold"
+          >
+            Buy Now
+          </button>
+        )}
       </div>
     </div>
   );

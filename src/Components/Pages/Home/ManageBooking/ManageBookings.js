@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import ManageBooking from './ManageBooking';
 
 const ManageBookings = () => {
@@ -9,6 +10,21 @@ const ManageBookings = () => {
       .then(res => res.json())
       .then(data => setProducts(data));
   }, [products]);
+  const handleRemove = id => {
+    const proceed = window.confirm('Are You Sure ?');
+    if (proceed) {
+      const url = `http://localhost:5000/buy/${id}`;
+      fetch(url, {
+        method: 'DELETE',
+      })
+        .then(res => res.json())
+        .then(data => {
+          const remaining = products.filter(product => product._id !== id);
+          setProducts(remaining);
+          toast.success('Successfully Delete');
+        });
+    }
+  };
   return (
     <div className="mx-20 shadow-xl">
       <div className="overflow-x-auto w-full">
@@ -34,6 +50,7 @@ const ManageBookings = () => {
                 key={product._id}
                 product={product}
                 index={index + 1}
+                handleRemove={handleRemove}
               />
             ))}
           </tbody>

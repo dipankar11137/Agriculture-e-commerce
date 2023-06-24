@@ -33,12 +33,22 @@ const ManageBooking = ({ product, index, handleRemove }) => {
         )}
       </td>
       <th>
-        <button
-          onClick={() => handleRemove(product?._id)}
-          className="btn btn-primary text-white btn-xs"
-        >
-          Remove
-        </button>
+        {product?.payment ? (
+          <button
+            disabled
+            // onClick={() => handleRemove(product?._id)}
+            className="btn btn-primary text-white btn-xs"
+          >
+            Remove
+          </button>
+        ) : (
+          <button
+            onClick={() => handleRemove(product?._id)}
+            className="btn btn-primary text-white btn-xs"
+          >
+            Remove
+          </button>
+        )}
       </th>
     </tr>
   );
