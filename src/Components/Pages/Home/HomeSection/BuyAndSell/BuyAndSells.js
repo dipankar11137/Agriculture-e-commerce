@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { FaUpload } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import buy from '../../../../../Images/image/buy-removebg-preview.png';
 import sell from '../../../../../Images/image/images-removebg-preview.png';
+import auth from '../../../../../firebase.init';
 import BuyAndSell from './BuyAndSell';
 import SellModal from './SellModal';
 
 const BuyAndSells = () => {
+  const [user] = useAuthState(auth);
   const [products, setProducts] = useState([]);
   const navigator = useNavigate();
   useEffect(() => {
@@ -40,14 +43,32 @@ const BuyAndSells = () => {
           </h1>
 
           {/* modal start */}
-          <label
-            htmlFor="sellingModal"
-            className="btn btn-primary text-xl text-white ml-20 font-bold"
-          >
-            Selling You Products{' '}
-            <FaUpload className="text-white ml-5 text-3xl animate-bounce" />
-          </label>
-          <SellModal />
+          {user ? (
+            <>
+              {' '}
+              <label
+                htmlFor="sellingModal"
+                className="btn btn-primary text-xl text-white ml-20 font-bold"
+              >
+                Selling You Products{' '}
+                <FaUpload className="text-white ml-5 text-3xl animate-bounce" />
+              </label>
+              <SellModal />
+            </>
+          ) : (
+            <>
+              {' '}
+              <label
+                disabled
+                htmlFor="sellingModal"
+                className="btn btn-primary text-xl text-white ml-20 font-bold"
+              >
+                Selling You Products{' '}
+                <FaUpload className="text-white ml-5 text-3xl animate-bounce" />
+              </label>
+              <SellModal />
+            </>
+          )}
 
           {/* modal end */}
         </div>
