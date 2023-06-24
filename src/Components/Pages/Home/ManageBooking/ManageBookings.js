@@ -25,6 +25,20 @@ const ManageBookings = () => {
         });
     }
   };
+  const handleDelivery = id => {
+    const updateDelivered = { delivered: true };
+    fetch(`http://localhost:5000/buyDelivered/${id}`, {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(updateDelivered),
+    })
+      .then(res => res.json())
+      .then(data => {
+        toast.success('Delivered Successfully');
+      });
+  };
   return (
     <div className="mx-20 shadow-xl">
       <div className="overflow-x-auto w-full">
@@ -41,6 +55,7 @@ const ManageBookings = () => {
               <th>Phone</th>
               <th>Date</th>
               <th>Payment</th>
+              <th>Delivery Status</th>
               <th>Remove</th>
             </tr>
           </thead>
@@ -51,6 +66,7 @@ const ManageBookings = () => {
                 product={product}
                 index={index + 1}
                 handleRemove={handleRemove}
+                handleDelivery={handleDelivery}
               />
             ))}
           </tbody>

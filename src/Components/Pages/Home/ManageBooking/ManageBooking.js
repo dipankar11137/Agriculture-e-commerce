@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ManageBooking = ({ product, index, handleRemove }) => {
+const ManageBooking = ({ product, index, handleRemove, handleDelivery }) => {
   return (
     <tr>
       <th>{index}</th>
@@ -32,6 +32,28 @@ const ManageBooking = ({ product, index, handleRemove }) => {
           <h1 className="text-xl font-bold text-red-800"> Unpaid</h1>
         )}
       </td>
+      <th>
+        {product?.payment ? (
+          <>
+            {product?.delivered ? (
+              <h1 className="text-xl text-semibold text-purple-700">
+                Delivered
+              </h1>
+            ) : (
+              <button
+                onClick={() => handleDelivery(product?._id)}
+                className="btn btn-primary text-white btn-xs"
+              >
+                Delivery
+              </button>
+            )}
+          </>
+        ) : (
+          <button disabled className="btn btn-primary text-white btn-xs">
+            Delivery
+          </button>
+        )}
+      </th>
       <th>
         {product?.payment ? (
           <button
