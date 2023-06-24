@@ -6,7 +6,7 @@ import {
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
-// import axios from "axios";
+
 import Loading from "../Share/Loading";
 
 const Login = () => {

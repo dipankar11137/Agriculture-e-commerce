@@ -1,8 +1,8 @@
-import React from "react";
-import "../../../../CSS/CardStyle.css";
-import "../../../../CSS/ImageStyle.css";
+import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../../../firebase.init';
+import '../../../../CSS/CardStyle.css';
+import '../../../../CSS/ImageStyle.css';
 
 const AgriculturalMedicine = ({ product, handleBuy }) => {
   const [user] = useAuthState(auth);
@@ -26,7 +26,7 @@ const AgriculturalMedicine = ({ product, handleBuy }) => {
         </div>
       </div>
       <div className="overlay rounded-lg">
-        {user.email === 'abc@def.com' ? (
+        {user?.email === 'abc@def.com' ? (
           <button
             disabled
             onClick={() => handleBuy(product._id)}

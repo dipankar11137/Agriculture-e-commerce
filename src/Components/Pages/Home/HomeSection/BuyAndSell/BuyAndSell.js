@@ -29,7 +29,7 @@ const BuyAndSell = ({ product, handleBuy }) => {
         </div>
       </div>
       <div className="overlay rounded-lg">
-        {user.email === 'abc@def.com' ? (
+        {user?.email === 'abc@def.com' ? (
           <button
             disabled
             onClick={() => handleBuy(product._id)}
