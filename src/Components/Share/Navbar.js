@@ -87,7 +87,14 @@ const Navbar = () => {
         </>
       )}
 
-      <li>
+      <li
+        onClick={() => setSelectedButton('Button 12')}
+        className={
+          selectedButton === 'Button 12'
+            ? 'bg-primary text-white rounded-lg'
+            : ''
+        }
+      >
         {user ? (
           <p onClick={logout}>Sign Out</p>
         ) : (
