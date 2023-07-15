@@ -114,7 +114,7 @@ const ManageItems = () => {
               <th>Owner Name</th>
               <th>Email</th>
               {/* <th>Location</th> */}
-              <th>Description</th>
+              <th className="w-[100px]">Description</th>
               <th>Quantity</th>
               <th>Price</th>
               <th>Update</th>

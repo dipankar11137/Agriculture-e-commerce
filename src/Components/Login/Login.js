@@ -48,11 +48,11 @@ const Login = () => {
     <div
       style={{
         backgroundImage: `url("https://w.forfun.com/fetch/ee/ee26dddc94efa54b68bccf9b53687290.jpeg")`,
-        backgroundPosition: "center",
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        width: "100%",
-        height: "100vp",
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        width: '100%',
+        height: '100vp',
       }}
       className="flex justify-center h-screen bg-slate-700"
     >
@@ -60,11 +60,11 @@ const Login = () => {
         <div
           style={{
             backgroundImage: `url("https://c4.wallpaperflare.com/wallpaper/297/878/431/artstation-digital-art-building-night-moon-hd-wallpaper-preview.jpg")`,
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-            width: "100%",
-            boxShadow: "2px ",
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            width: '100%',
+            boxShadow: '2px ',
           }}
           className="card w-96 shadow-2xl bg-violet-50"
         >
@@ -76,28 +76,28 @@ const Login = () => {
                   <span className="label-text text-white">Email</span>
                 </label>
                 <input
-                  style={{ width: "400px" }}
+                  style={{ width: '400px' }}
                   type="email"
                   placeholder="Your Email"
-                  className="input input-bordered bg-white  w-96 "
-                  {...register("email", {
+                  className="input input-bordered bg-white text-black  w-96 "
+                  {...register('email', {
                     required: {
                       value: true,
-                      message: "Email is Required",
+                      message: 'Email is Required',
                     },
                     pattern: {
                       value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-                      message: "Provide a valid Email",
+                      message: 'Provide a valid Email',
                     },
                   })}
                 />
                 <label className="label">
-                  {errors.email?.type === "required" && (
+                  {errors.email?.type === 'required' && (
                     <span className="label-text-alt text-red-500">
                       {errors.email.message}
                     </span>
                   )}
-                  {errors.email?.type === "pattern" && (
+                  {errors.email?.type === 'pattern' && (
                     <span className="label-text-alt text-red-500">
                       {errors.email.message}
                     </span>
@@ -112,24 +112,24 @@ const Login = () => {
                   type="password"
                   placeholder="Password"
                   className="input input-bordered text-black font-bold bg-white w-full "
-                  {...register("password", {
+                  {...register('password', {
                     required: {
                       value: true,
-                      message: "Password is Required",
+                      message: 'Password is Required',
                     },
                     minLength: {
                       value: 6,
-                      message: "Must be 6 characters or longer",
+                      message: 'Must be 6 characters or longer',
                     },
                   })}
                 />
                 <label className="label">
-                  {errors.password?.type === "required" && (
+                  {errors.password?.type === 'required' && (
                     <span className="label-text-alt text-red-500">
                       {errors.password.message}
                     </span>
                   )}
-                  {errors.password?.type === "minLength" && (
+                  {errors.password?.type === 'minLength' && (
                     <span className="label-text-alt text-red-500">
                       {errors.password.message}
                     </span>

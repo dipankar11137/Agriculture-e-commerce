@@ -31,7 +31,11 @@ const ManageItem = ({
       <td>{product?.userName}</td>
       <td>{product?.email}</td>
       {/* <td>{product?.location}</td> */}
-      <td>{product?.description}</td>
+      <td className=" ">
+        <div className="w-[300px] overflow-y-auto whitespace-normal h-20">
+          {product?.description}
+        </div>
+      </td>
       <td>
         <span className="font-bold text-xl"> {product?.quantity}</span>{' '}
         {product?.weight}

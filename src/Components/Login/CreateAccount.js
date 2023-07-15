@@ -50,7 +50,7 @@ const CreateAccount = () => {
   };
 
   const onSubmit = async data => {
-    await createDBUser(data);
+    // await createDBUser(data);
     await createUserWithEmailAndPassword(data.email, data.password);
     await signInWithGoogle(data.email, data.password);
     await updateProfile({ displayName: data.name, phoneNumber: data.phone });

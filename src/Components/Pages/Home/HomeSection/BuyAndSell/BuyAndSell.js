@@ -1,5 +1,6 @@
 import React from "react";
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { TbCurrencyTaka } from 'react-icons/tb';
 import auth from '../../../../../firebase.init';
 
 const BuyAndSell = ({ product, handleBuy }) => {
@@ -23,9 +24,17 @@ const BuyAndSell = ({ product, handleBuy }) => {
         />
         <div className="p-3 mt-3  pb-10">
           <h2 className="text-2xl font-bold">{product?.name}</h2>
-          <h2 className="text-xl font-semibold">Price : {product?.price}</h2>
-          <h2>Location : {product?.location}</h2>
-          <h1>Description : {product?.description}</h1>
+          <h2 className="text-xl font-semibold flex">
+            Price : {product?.price}
+            <TbCurrencyTaka className="mt-1 mr-1 font-bold" />
+          </h2>
+          <h2>
+            <span className="font-bold">Location :</span> {product?.location}
+          </h2>
+          <h1>
+            <span className="font-bold">Description :</span>{' '}
+            {product?.description}
+          </h1>
         </div>
       </div>
       <div className="overlay rounded-lg">
